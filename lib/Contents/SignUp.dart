@@ -11,6 +11,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   String fullName = "";
   String email = "";
   String user = "";
@@ -40,10 +41,10 @@ class _SignUpState extends State<SignUp> {
             'phone': phone,
             'UserType': user,
           });
-        Navigator.push(context,MaterialPageRoute(builder: ((context) => const StudentProfileEdit())));
+        Navigator.push(context,MaterialPageRoute(builder: ((context) =>  StudentProfileEdit())));
 
     } catch (err) {
-      var message = 'Email already have an account!';
+      var message = 'Error! Check your credential for mistakes';
 
       setState(() {
         _isLoading = false;
@@ -63,6 +64,7 @@ class _SignUpState extends State<SignUp> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -286,3 +288,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+

@@ -1,14 +1,22 @@
-import 'package:blink/Contents/student-profile-edit.dart';
 import 'package:flutter/material.dart';
 
-class StudentProfile extends StatefulWidget {
-  const StudentProfile({Key? key}) : super(key: key);
 
+class StudentProfile extends StatefulWidget {
+  final String  nameHolder ;
+  final String parentHolder ;
+  final String deptHolder ;
+  final String emailHolder ;
+  final String yearHolder ;
+  final String adHolder ;
+  const StudentProfile({Key? key, required this.nameHolder, required this.parentHolder, required this.deptHolder, required this.emailHolder, required this.yearHolder, required this.adHolder}) : super(key: key);
+  
   @override
   _StudentProfileState createState() => _StudentProfileState();
 }
 
 class _StudentProfileState extends State<StudentProfile> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,12 +51,12 @@ class _StudentProfileState extends State<StudentProfile> {
                     const SizedBox(
                       height: 20,
                     ),
-                     const CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Color(0xffFDF9F9),
+                    CircleAvatar(
+                      radius: 55,
+                      child: Image.asset('images/student-profile.png'),
                     ),
                     const SizedBox(
-                      height: 40,
+                      height: 25,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 50, right: 50),
@@ -62,70 +70,70 @@ class _StudentProfileState extends State<StudentProfile> {
                           padding: const EdgeInsets.all(40),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children:  [
                               Text(
-                                'Full Name',
-                                style: TextStyle(
+                               widget.nameHolder,
+                                style: const TextStyle(
                                     color: Color(0xff5a5959),
                                     // color: Color(0xff388A75),
                                     fontFamily: 'Rockwell',
                                     fontSize: 20,
                                     fontWeight: FontWeight.normal),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Text(
-                                'Guardian Name',
-                                style: TextStyle(
+                                widget.parentHolder,
+                                style: const TextStyle(
                                     color: Color(0xff5a5959),
                                     // color: Color(0xff388A75),
                                     fontFamily: 'Rockwell',
                                     fontSize: 20,
                                     fontWeight: FontWeight.normal),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Text(
-                                'example@email.com',
-                                style: TextStyle(
+                                widget.emailHolder,
+                                style: const TextStyle(
                                     color: Color(0xff5a5959),
                                     // color: Color(0xff388A75),
                                     fontFamily: 'Rockwell',
                                     fontSize: 20,
                                     fontWeight: FontWeight.normal),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Text(
-                                'Computer Science',
-                                style: TextStyle(
+                                widget.deptHolder,
+                                style: const TextStyle(
                                     color: Color(0xff5a5959),
                                     // color: Color(0xff388A75),
                                     fontFamily: 'Rockwell',
                                     fontSize: 20,
                                     fontWeight: FontWeight.normal),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Text(
-                                '3rd year',
-                                style: TextStyle(
+                                widget.yearHolder,
+                                style: const TextStyle(
                                     color: Color(0xff5a5959),
                                     // color: Color(0xff388A75),
                                     fontFamily: 'Rockwell',
                                     fontSize: 20,
                                     fontWeight: FontWeight.normal),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Text(
-                                'AdNo: 4589',
-                                style: TextStyle(
+                               widget.adHolder,
+                                style: const TextStyle(
                                     color: Color(0xff5a5959),
                                     // color: Color(0xff388A75),
                                     fontFamily: 'Rockwell',
@@ -137,11 +145,11 @@ class _StudentProfileState extends State<StudentProfile> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10,left: 10,right: 10),
+                      padding: const EdgeInsets.only(top: 5,left: 10,right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.max,
@@ -149,13 +157,7 @@ class _StudentProfileState extends State<StudentProfile> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10, left: 25),
                             child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: ((context) => const StudentProfileEdit())
-                                    ));
-                              },
+                              onPressed: () => goBack(context),
                               child: const Text(
                                 ' Edit Profile',
                                 style: TextStyle(
@@ -196,4 +198,6 @@ class _StudentProfileState extends State<StudentProfile> {
       ),
     );
   }
+
+  goBack(BuildContext context) {Navigator.pop(context);}
 }
