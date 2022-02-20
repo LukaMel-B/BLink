@@ -1,6 +1,8 @@
 import 'package:blink/Contents/SignUp.dart';
-import 'package:blink/Contents/student-profile-view.dart';
+import 'package:blink/Contents/signup_controller.dart';
+import 'package:blink/Contents/student-profile-edit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class StudentLogin extends StatefulWidget {
   const StudentLogin({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class StudentLogin extends StatefulWidget {
 }
 
 class _StudentLoginState extends State<StudentLogin> {
+  SignUpController signUpController = Get.put(SignUpController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,11 +152,7 @@ class _StudentLoginState extends State<StudentLogin> {
                           padding: const EdgeInsets.only(bottom: 25, right: 15),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: ((context) => const StudentProfile())
-                                  ));
+                             // Navigator.push(context, MaterialPageRoute(builder: ((context) => const StudentProfileEdit())));
                             },
                             child: const Icon(Icons.arrow_forward_rounded,
                                 size: 30, color: Colors.white),
