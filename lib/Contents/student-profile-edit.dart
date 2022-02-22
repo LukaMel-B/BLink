@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class StudentProfileEdit extends StatefulWidget {
-
-
-    StudentProfileEdit({Key? key}) : super(key: key);
+  const StudentProfileEdit({Key? key}) : super(key: key);
   @override
   _StudentProfileEditState createState() => _StudentProfileEditState();
 }
@@ -21,16 +19,23 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
 
   final name = TextEditingController();
   final gName = TextEditingController();
-  final  emails= TextEditingController();
-  final  yr= TextEditingController();
-  final  adNo= TextEditingController();
-  final  dept= TextEditingController();
-  getItemAndNavigate(BuildContext context){
-    Navigator.push(context,MaterialPageRoute(builder: ((context) =>   StudentProfile(nameHolder : name.text,
-        parentHolder : gName.text,deptHolder : dept.text,yearHolder : yr.text, adHolder : adNo.text,
-        emailHolder : emails.text)))
-    );
+  final emails = TextEditingController();
+  final yr = TextEditingController();
+  final adNo = TextEditingController();
+  final dept = TextEditingController();
+  getItemAndNavigate(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: ((context) => StudentProfile(
+                nameHolder: name.text,
+                parentHolder: gName.text,
+                deptHolder: dept.text,
+                yearHolder: yr.text,
+                adHolder: adNo.text,
+                emailHolder: emails.text))));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +78,16 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                             height: 100,
                           ),
                           Obx(() => CircleAvatar(
-                            radius: 55,
-                            backgroundImage: signUpController.isProficPicPathSet.value == true? FileImage(File(signUpController.profilePicPath.value)) as ImageProvider : const AssetImage('images/student-profile.png'),
-                          )),
+                                radius: 55,
+                                backgroundImage:
+                                    signUpController.isProficPicPathSet.value ==
+                                            true
+                                        ? FileImage(File(signUpController
+                                            .profilePicPath
+                                            .value)) as ImageProvider
+                                        : const AssetImage(
+                                            'images/student-profile.png'),
+                              )),
                           Positioned(
                             bottom: 6,
                             right: 3,
@@ -85,19 +97,23 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                                 width: 35,
                                 color: const Color(0xff00B8B8),
                                 child: InkWell(
-                                  child: const Icon(Icons.camera_alt_rounded,
-                                  color: Colors.white,
-                                  size: 20,),
+                                  child: const Icon(
+                                    Icons.camera_alt_rounded,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ),
                                   onTap: () {
                                     showModalBottomSheet(
                                         context: context,
-                                        backgroundColor: const Color(0xffF7FFE8),
+                                        backgroundColor:
+                                            const Color(0xffF7FFE8),
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.vertical(
                                             top: Radius.circular(30),
                                           ),
                                         ),
-                                        builder: (context) => bottomSheet(context));
+                                        builder: (context) =>
+                                            bottomSheet(context));
                                   },
                                 ),
                               ),
@@ -176,7 +192,6 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                         ),
                         controller: emails,
                         keyboardType: TextInputType.emailAddress,
-
                       ),
                     ),
                     Padding(
@@ -270,7 +285,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                           padding: const EdgeInsets.only(
                               top: 18, bottom: 15, right: 15),
                           child: TextButton(
-                            onPressed:()=> getItemAndNavigate(context),
+                            onPressed: () => getItemAndNavigate(context),
                             child: const Icon(Icons.arrow_forward_rounded,
                                 size: 30, color: Colors.white),
                             style: TextButton.styleFrom(
@@ -315,22 +330,21 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                   children: const [
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                          Icons.image,
-                          size: 35
-                      ),
+                      child: Icon(Icons.image, size: 35),
                     ),
-                    Text('Gallery',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    Text(
+                      'Gallery',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     )
                   ],
                 ),
-                onTap: (){
+                onTap: () {
                   takephoto(ImageSource.gallery);
                 },
               ),
               const SizedBox(
-                width:70,
+                width: 70,
               ),
               InkWell(
                 child: Column(
@@ -338,16 +352,16 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                   children: const [
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.camera_alt,
-                      size: 35),
+                      child: Icon(Icons.camera_alt, size: 35),
                     ),
-                    Text('Camera',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    Text(
+                      'Camera',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     )
                   ],
                 ),
-                onTap: (){
+                onTap: () {
                   takephoto(ImageSource.camera);
                 },
               )
@@ -360,7 +374,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
 
   Future<void> takephoto(ImageSource source) async {
     final pickedImage =
-       await imagePicker.pickImage(source: source, imageQuality: 100);
+        await imagePicker.pickImage(source: source, imageQuality: 100);
     pickedFile = File(pickedImage!.path);
     signUpController.setProfileImagePath(pickedFile!.path);
   }
