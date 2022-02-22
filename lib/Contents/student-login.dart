@@ -1,8 +1,9 @@
+import 'package:blink/Contents/Dashboard/Student-dashboard.dart';
 import 'package:blink/Contents/SignUp.dart';
 import 'package:blink/Contents/signup_controller.dart';
-import 'package:blink/Contents/student-profile-edit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class StudentLogin extends StatefulWidget {
   const StudentLogin({Key? key}) : super(key: key);
@@ -12,6 +13,44 @@ class StudentLogin extends StatefulWidget {
 }
 
 class _StudentLoginState extends State<StudentLogin> {
+  String email = "";
+  String password = "";
+
+  bool _isLoading = false;
+  final _auth = FirebaseAuth.instance;
+
+  void signInFunc() async {
+    UserCredential authResult;
+
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+      authResult = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } catch (err) {
+      var message = 'Error! Check your credential for mistakes';
+
+      setState(() {
+        _isLoading = false;
+      });
+      final snackBar = SnackBar(
+        content: Text(
+          message,
+          style: const TextStyle(
+              color: Color(0xffABAAAA),
+              // color: Color(0xff388A75),y
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w500,
+              fontSize: 15),
+        ),
+        backgroundColor: const Color(0xffF9FFED),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
   SignUpController signUpController = Get.put(SignUpController());
   @override
   Widget build(BuildContext context) {
@@ -86,6 +125,9 @@ class _StudentLoginState extends State<StudentLogin> {
                               fillColor:
                                   const Color(0xffFDF9F9).withOpacity(0.35),
                             ),
+                            onChanged: (val) {
+                              email = val;
+                            },
                             keyboardType: TextInputType.name,
                           ),
                         ),
@@ -111,6 +153,9 @@ class _StudentLoginState extends State<StudentLogin> {
                               fillColor:
                                   const Color(0xffFDF9F9).withOpacity(0.35),
                             ),
+                            onChanged: (val) {
+                              password = val;
+                            },
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: true,
                           ),
@@ -131,8 +176,7 @@ class _StudentLoginState extends State<StudentLogin> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => const SignUp())
-                                  ));
+                                      builder: ((context) => const SignUp())));
                             },
                             child: const Text(
                               ' Sign Up',
@@ -152,7 +196,7 @@ class _StudentLoginState extends State<StudentLogin> {
                           padding: const EdgeInsets.only(bottom: 25, right: 15),
                           child: TextButton(
                             onPressed: () {
-                             // Navigator.push(context, MaterialPageRoute(builder: ((context) => const StudentProfileEdit())));
+                              signInFunc();
                             },
                             child: const Icon(Icons.arrow_forward_rounded,
                                 size: 30, color: Colors.white),

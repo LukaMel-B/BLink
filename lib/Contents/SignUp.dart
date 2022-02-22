@@ -1,4 +1,3 @@
-import 'package:blink/Contents/UserType.dart';
 import 'package:blink/Contents/parent-profile-edit.dart';
 import 'package:blink/Contents/student-profile-edit.dart';
 import 'package:blink/Contents/teacher-profile-edit.dart';
@@ -77,7 +76,7 @@ class _SignUpState extends State<SignUp> {
           break;
       }
     } catch (err) {
-      var message = 'Error! Check your credential for mistakes';
+      var message = 'Error! Something went wrong!';
 
       setState(() {
         _isLoading = false;

@@ -1,3 +1,4 @@
+import 'package:blink/Contents/Dashboard/Student-dashboard.dart';
 import 'package:flutter/material.dart';
 
 class StudentProfile extends StatefulWidget {
@@ -186,7 +187,11 @@ class _StudentProfileState extends State<StudentProfile> {
                                 const EdgeInsets.only(bottom: 10, right: 15),
                             child: TextButton(
                               onPressed: () {
-                                //Navigator.pushNamed(context, '/StudentProfile');
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) =>
+                                            const StudentDashboard())));
                               },
                               child: const Icon(Icons.arrow_forward_rounded,
                                   size: 30, color: Colors.white),

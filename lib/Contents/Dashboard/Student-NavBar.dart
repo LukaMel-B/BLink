@@ -10,6 +10,17 @@ class StudentNavBar extends StatefulWidget {
 class _StudentNavBarState extends State<StudentNavBar> {
   @override
   Widget build(BuildContext context) {
-    return const Drawer();
+    return Drawer(
+      child: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xffF2F5EB), Color(0xff9DC8C8)]),
+          ),
+        ),
+      ),
+    );
   }
 }

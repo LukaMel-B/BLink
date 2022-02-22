@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:blink/Contents/signup_controller.dart';
+import 'package:blink/Contents/student-login.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:blink/Contents/student-profile-view.dart';
 import 'package:flutter/material.dart';
