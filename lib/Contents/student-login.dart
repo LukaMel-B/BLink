@@ -23,11 +23,8 @@ class _StudentLoginState extends State<StudentLogin> {
     UserCredential authResult;
 
     try {
-      setState(() {
-        _isLoading = true;
-      });
-      authResult = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      authResult = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
     } catch (err) {
       var message = 'Error! Check your credential for mistakes';
 
