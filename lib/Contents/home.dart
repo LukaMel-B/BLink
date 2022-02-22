@@ -55,8 +55,7 @@ class Landing extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const Student1())
-                            ));
+                                builder: ((context) => const Student1())));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(
@@ -85,8 +84,7 @@ class Landing extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const Teacher1())
-                            ));
+                                builder: ((context) => const Teacher1())));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(
@@ -115,8 +113,7 @@ class Landing extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const Parent1())
-                            ));
+                                builder: ((context) => const Parent1())));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(

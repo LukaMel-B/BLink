@@ -1,4 +1,7 @@
+import 'package:blink/Contents/UserType.dart';
+import 'package:blink/Contents/parent-profile-edit.dart';
 import 'package:blink/Contents/student-profile-edit.dart';
+import 'package:blink/Contents/teacher-profile-edit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +14,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
   String fullName = "";
   String email = "";
   String user = "";
@@ -29,20 +31,51 @@ class _SignUpState extends State<SignUp> {
         _isLoading = true;
       });
       authResult = await _auth.createUserWithEmailAndPassword(
-          email: email,
-          password: password
-      );
+          email: email, password: password);
 
-      await FirebaseFirestore.instance.collection('users').doc(
-          authResult.user?.uid).set(
-          {
-            'fullName': fullName,
-            'email': email,
-            'phone': phone,
-            'UserType': user,
-          });
-        Navigator.push(context,MaterialPageRoute(builder: ((context) =>  StudentProfileEdit())));
-
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(authResult.user?.uid)
+          .set({
+        'fullName': fullName,
+        'email': email,
+        'phone': phone,
+        'UserType': user,
+      });
+      switch (user) {
+        case 'student':
+          Navigator.push(context,
+              MaterialPageRoute(builder: ((context) => StudentProfileEdit())));
+          break;
+        case 'Student':
+          Navigator.push(context,
+              MaterialPageRoute(builder: ((context) => StudentProfileEdit())));
+          break;
+        case 'parent':
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const ParentProfileEdit())));
+          break;
+        case 'Parent':
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const ParentProfileEdit())));
+          break;
+        case 'teacher':
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const TeacherProfileEdit())));
+          break;
+        case 'Teacher':
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const TeacherProfileEdit())));
+          break;
+      }
     } catch (err) {
       var message = 'Error! Check your credential for mistakes';
 
@@ -50,7 +83,8 @@ class _SignUpState extends State<SignUp> {
         _isLoading = false;
       });
       final snackBar = SnackBar(
-        content: Text(message,
+        content: Text(
+          message,
           style: const TextStyle(
               color: Color(0xffABAAAA),
               // color: Color(0xff388A75),y
@@ -111,7 +145,7 @@ class _SignUpState extends State<SignUp> {
                             color: Colors.black87,
                             // color: Color(0xff388A75),
                             fontFamily: 'Rockwell',
-                            fontSize: 33 ,
+                            fontSize: 33,
                             fontWeight: FontWeight.normal),
                       ),
                     ),
@@ -131,13 +165,11 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           filled: true,
-                          hintStyle:
-                              const TextStyle(color: Color(0xffABAAAA)),
+                          hintStyle: const TextStyle(color: Color(0xffABAAAA)),
                           hintText: "Full Name",
-                          fillColor:
-                              const Color(0xffFDF9F9).withOpacity(0.39),
+                          fillColor: const Color(0xffFDF9F9).withOpacity(0.39),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           fullName = val;
                         },
                         keyboardType: TextInputType.name,
@@ -159,13 +191,11 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           filled: true,
-                          hintStyle:
-                              const TextStyle(color: Color(0xffABAAAA)),
+                          hintStyle: const TextStyle(color: Color(0xffABAAAA)),
                           hintText: "Email",
-                          fillColor:
-                              const Color(0xffFDF9F9).withOpacity(0.38),
+                          fillColor: const Color(0xffFDF9F9).withOpacity(0.38),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           email = val;
                         },
                         keyboardType: TextInputType.emailAddress,
@@ -187,13 +217,11 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           filled: true,
-                          hintStyle:
-                          const TextStyle(color: Color(0xffABAAAA)),
+                          hintStyle: const TextStyle(color: Color(0xffABAAAA)),
                           hintText: "User (Hint: Student/Parent/Teacher)",
-                          fillColor:
-                          const Color(0xffFDF9F9).withOpacity(0.38),
+                          fillColor: const Color(0xffFDF9F9).withOpacity(0.38),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           user = val;
                         },
                         keyboardType: TextInputType.text,
@@ -215,13 +243,11 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           filled: true,
-                          hintStyle:
-                              const TextStyle(color: Color(0xffABAAAA)),
+                          hintStyle: const TextStyle(color: Color(0xffABAAAA)),
                           hintText: "Phone number",
-                          fillColor:
-                              const Color(0xffFDF9F9).withOpacity(0.35),
+                          fillColor: const Color(0xffFDF9F9).withOpacity(0.35),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           phone = val;
                         },
                         keyboardType: TextInputType.phone,
@@ -243,13 +269,11 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           filled: true,
-                          hintStyle:
-                              const TextStyle(color: Color(0xffABAAAA)),
+                          hintStyle: const TextStyle(color: Color(0xffABAAAA)),
                           hintText: "Password",
-                          fillColor:
-                              const Color(0xffFDF9F9).withOpacity(0.35),
+                          fillColor: const Color(0xffFDF9F9).withOpacity(0.35),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           password = val;
                         },
                         keyboardType: TextInputType.visiblePassword,
@@ -265,14 +289,13 @@ class _SignUpState extends State<SignUp> {
                               top: 18, bottom: 20, right: 15),
                           child: TextButton(
                             onPressed: () {
-                             signUpFunc();
+                              signUpFunc();
                             },
                             child: const Icon(Icons.arrow_forward_rounded,
                                 size: 30, color: Colors.white),
                             style: TextButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(15)),
+                                  borderRadius: BorderRadius.circular(15)),
                             ),
                           ),
                         ),
@@ -288,4 +311,3 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
-
