@@ -25,6 +25,9 @@ class _StudentLoginState extends State<StudentLogin> {
     try {
       authResult = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      Navigator.popUntil(context, (route) => false);
+      Navigator.push(context,
+          MaterialPageRoute(builder: ((context) => const StudentDashboard())));
     } catch (err) {
       var message = 'Error! Check your credential for mistakes';
 
