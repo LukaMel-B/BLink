@@ -37,8 +37,7 @@ class _SettingsState extends State<Settings> {
                               top: 6, bottom: 15, right: 15),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(
-                                  context, '/student-profile');
+                              Navigator.pushNamed(context, '/student-profile');
                             },
                             child: const Icon(Icons.arrow_back_rounded,
                                 size: 35, color: Color(0xff34a3a3)),
@@ -115,15 +114,14 @@ class _SettingsState extends State<Settings> {
                                     color: Colors.white),
                                 style: TextButton.styleFrom(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(50)),
+                                      borderRadius: BorderRadius.circular(50)),
                                 ),
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(
-                          height: 45 ,
+                          height: 45,
                         ),
                         const Padding(
                           padding: EdgeInsets.only(left: 65),
@@ -141,7 +139,8 @@ class _SettingsState extends State<Settings> {
                           height: 25,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 1, bottom: 10),
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 1, bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -176,7 +175,8 @@ class _SettingsState extends State<Settings> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 1, bottom: 10),
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 1, bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -211,7 +211,8 @@ class _SettingsState extends State<Settings> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 1, bottom: 10),
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 1, bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -243,7 +244,8 @@ class _SettingsState extends State<Settings> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 1, bottom: 10),
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 1, bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

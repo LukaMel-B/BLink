@@ -1,40 +1,83 @@
-import 'package:blink/Contents/Dashboard/Student-dashboard.dart';
+import 'package:blink/Contents/Dashboard/Student/Student-dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'functions/const.dart';
+import 'package:blink/Contents/functions/profileView.dart';
 
 class StudentProfile extends StatefulWidget {
-  final String nameHolder;
-  final String parentHolder;
-  final String deptHolder;
-  final String emailHolder;
-  final String yearHolder;
-  final String adHolder;
-
-  const StudentProfile(
-      {Key? key,
-      required this.nameHolder,
-      required this.parentHolder,
-      required this.deptHolder,
-      required this.emailHolder,
-      required this.yearHolder,
-      required this.adHolder})
-      : super(key: key);
+  const StudentProfile({Key? key}) : super(key: key);
 
   @override
   _StudentProfileState createState() => _StudentProfileState();
 }
 
 class _StudentProfileState extends State<StudentProfile> {
+  String nameHolder = "name";
+  String parentHolder = "parent name";
+  String deptHolder = "department";
+  String emailHolder = "email";
+  String yearHolder = "year";
+  String adHolder = "adno";
+  final _auth = FirebaseAuth.instance;
+  final _fireStore = FirebaseFirestore.instance;
+  String loggedUser = "no uid";
+
+  void getUserID() {
+    try {
+      final users = _auth.currentUser;
+      if (users != null) {
+        loggedUser = users.uid;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  dynamic getDetails(String user) async {
+    if (loggedUser.length > 25) {
+      final detail = await _fireStore.collection("users").doc(user).get();
+      setState(() {
+        nameHolder = detail.data()?['fullName'] ?? "name";
+        parentHolder = detail.data()?['GuardianName'] ?? "parent name";
+        deptHolder = detail.data()?['Department'] ?? "department";
+        emailHolder = detail.data()?['email'] ?? "email";
+        yearHolder = detail.data()?['Year'] ?? "year";
+        adHolder = detail.data()?['AdmissionNumber'] ?? "admission number";
+      });
+    } else {
+      var message = 'Not loggedIn';
+      final snackBar = SnackBar(
+        content: Text(
+          message,
+          style: const TextStyle(
+              color: Color(0xffABAAAA),
+              // color: Color(0xff388A75),y
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w500,
+              fontSize: 15),
+        ),
+        backgroundColor: const Color(0xffF9FFED),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserID();
+    getDetails(loggedUser);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xffF9FFED), Color(0xffA4DADA)]),
-          ),
+          decoration: kTextFieldDecoration,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -74,78 +117,27 @@ class _StudentProfileState extends State<StudentProfile> {
                         height: 345,
                         width: 100,
                         child: Padding(
-                          padding: const EdgeInsets.all(40),
+                          padding: const EdgeInsets.fromLTRB(40, 40, 40, 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.nameHolder,
-                                style: const TextStyle(
-                                    color: Color(0xff5a5959),
-                                    // color: Color(0xff388A75),
-                                    fontFamily: 'Rockwell',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
+                              ProfileView(
+                                text: nameHolder,
                               ),
-                              const SizedBox(
-                                height: 30,
+                              ProfileView(
+                                text: parentHolder,
                               ),
-                              Text(
-                                widget.parentHolder,
-                                style: const TextStyle(
-                                    color: Color(0xff5a5959),
-                                    // color: Color(0xff388A75),
-                                    fontFamily: 'Rockwell',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
+                              ProfileView(
+                                text: emailHolder,
                               ),
-                              const SizedBox(
-                                height: 30,
+                              ProfileView(
+                                text: deptHolder,
                               ),
-                              Text(
-                                widget.emailHolder,
-                                style: const TextStyle(
-                                    color: Color(0xff5a5959),
-                                    // color: Color(0xff388A75),
-                                    fontFamily: 'Rockwell',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
+                              ProfileView(
+                                text: yearHolder,
                               ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                widget.deptHolder,
-                                style: const TextStyle(
-                                    color: Color(0xff5a5959),
-                                    // color: Color(0xff388A75),
-                                    fontFamily: 'Rockwell',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                widget.yearHolder,
-                                style: const TextStyle(
-                                    color: Color(0xff5a5959),
-                                    // color: Color(0xff388A75),
-                                    fontFamily: 'Rockwell',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                widget.adHolder,
-                                style: const TextStyle(
-                                    color: Color(0xff5a5959),
-                                    // color: Color(0xff388A75),
-                                    fontFamily: 'Rockwell',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
+                              ProfileView(
+                                text: adHolder,
                               ),
                             ],
                           ),
