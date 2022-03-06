@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../teachers-profile-view.dart';
 import 'Teacher-Class-Container.dart';
 
 class Tab2 extends StatelessWidget {
@@ -26,6 +27,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem1.png',
                         title: '1st Semester',
+                        nextpage: TeacherProfile(),
                       ),
                       SizedBox(
                         width: 35,
@@ -33,6 +35,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem2.png',
                         title: '2nd Semester',
+                        nextpage: TeacherProfile(),
                       )
                     ],
                   ),
@@ -44,14 +47,16 @@ class Tab2 extends StatelessWidget {
                     children: const [
                       ClassContainer(
                         image: 'images/CS-Sem3.png',
-                        title: '1st Semester',
+                        title: '3rd Semester',
+                        nextpage: TeacherProfile(),
                       ),
                       SizedBox(
                         width: 35,
                       ),
                       ClassContainer(
                         image: 'images/CS-Sem4.png',
-                        title: '2nd Semester',
+                        title: '4th Semester',
+                        nextpage: TeacherProfile(),
                       )
                     ],
                   ),
@@ -63,14 +68,16 @@ class Tab2 extends StatelessWidget {
                     children: const [
                       ClassContainer(
                         image: 'images/CS-Sem5.png',
-                        title: '1st Semester',
+                        title: '5th Semester',
+                        nextpage: TeacherProfile(),
                       ),
                       SizedBox(
                         width: 35,
                       ),
                       ClassContainer(
                         image: 'images/CS-Sem6.png',
-                        title: '2nd Semester',
+                        title: '6th Semester',
+                        nextpage: TeacherProfile(),
                       )
                     ],
                   ),

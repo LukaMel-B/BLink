@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class ClassContainer extends StatelessWidget {
   final String image;
   final String title;
-  const ClassContainer({Key? key, required this.image, required this.title})
+  final Widget nextpage;
+  const ClassContainer(
+      {Key? key,
+      required this.image,
+      required this.nextpage,
+      required this.title})
       : super(key: key);
 
   @override
@@ -28,14 +33,20 @@ class ClassContainer extends StatelessWidget {
               thickness: 1.1,
               color: Color(0xff4D907F),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 13),
-              child: Text(
-                title,
-                style: const TextStyle(
-                    fontFamily: 'Rockwell',
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
+            Flexible(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => nextpage)));
+                },
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                      fontFamily: 'Rockwell',
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             )
           ],

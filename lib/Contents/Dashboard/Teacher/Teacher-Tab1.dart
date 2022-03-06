@@ -1,6 +1,8 @@
 import 'package:blink/Contents/Dashboard/Teacher/Teacher-Class-Container.dart';
 import 'package:flutter/material.dart';
 
+import '../../teachers-profile-view.dart';
+
 class Tab1 extends StatelessWidget {
   const Tab1({Key? key}) : super(key: key);
 
@@ -25,6 +27,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-1.png',
                         title: '1st Semester',
+                        nextpage: TeacherProfile(),
                       ),
                       SizedBox(
                         width: 35,
@@ -32,6 +35,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-2.png',
                         title: '2nd Semester',
+                        nextpage: TeacherProfile(),
                       )
                     ],
                   ),
@@ -43,14 +47,16 @@ class Tab1 extends StatelessWidget {
                     children: const [
                       ClassContainer(
                         image: 'images/Sem-3.png',
-                        title: '1st Semester',
+                        title: '3rd Semester',
+                        nextpage: TeacherProfile(),
                       ),
                       SizedBox(
                         width: 35,
                       ),
                       ClassContainer(
                         image: 'images/Sem-4.png',
-                        title: '2nd Semester',
+                        title: '4th Semester',
+                        nextpage: TeacherProfile(),
                       )
                     ],
                   ),
@@ -62,14 +68,16 @@ class Tab1 extends StatelessWidget {
                     children: const [
                       ClassContainer(
                         image: 'images/Sem-5.png',
-                        title: '1st Semester',
+                        title: '5th Semester',
+                        nextpage: TeacherProfile(),
                       ),
                       SizedBox(
                         width: 35,
                       ),
                       ClassContainer(
                         image: 'images/Sem-6.png',
-                        title: '2nd Semester',
+                        title: '6th Semester',
+                        nextpage: TeacherProfile(),
                       )
                     ],
                   ),

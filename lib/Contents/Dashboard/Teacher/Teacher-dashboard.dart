@@ -18,23 +18,38 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
         child: Container(
           decoration: kTextFieldDecoration,
           child: Expanded(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Padding(
-                padding: EdgeInsets.only(left: 33, top: 115),
-                child: Text(
-                  'Dashboard',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontFamily: 'Rockwell', fontSize: 35),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 33, top: 115),
+                  child: Text(
+                    'Dashboard',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontFamily: 'Rockwell', fontSize: 35),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 29, right: 29),
-                child: TeacgerToggleBar(),
-              ),
-            ],
-          )),
+                const Padding(
+                  padding: EdgeInsets.only(left: 29, right: 29),
+                  child: TeacgerToggleBar(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 14, right: 25),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Image.asset(
+                          'images/addicon.png',
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );
