@@ -1,10 +1,9 @@
+import 'package:blink/Contents/Dashboard/Teacher/TeacherSideBarLayout.dart';
 import 'package:blink/Contents/parent.dart';
 import 'package:blink/Contents/student.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../teacher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -40,12 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
               MaterialPageRoute(builder: ((context) => const Parent1())));
           break;
         case 'Teacher':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Teacher1())));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const TeacherSBLayout())));
           break;
         case 'teacher':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Teacher1())));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const TeacherSBLayout())));
           break;
       }
     }
