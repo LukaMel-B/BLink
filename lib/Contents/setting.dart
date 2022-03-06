@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Dashboard/Teacher/TUser-get.dart';
+
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -37,7 +39,7 @@ class _SettingsState extends State<Settings> {
                               top: 6, bottom: 15, right: 15),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/student-profile');
+                              Navigator.pop(context);
                             },
                             child: const Icon(Icons.arrow_back_rounded,
                                 size: 35, color: Color(0xff34a3a3)),
@@ -83,42 +85,35 @@ class _SettingsState extends State<Settings> {
                         const SizedBox(
                           height: 25,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            const SizedBox(
-                              width: 0,
-                            ),
-                            const CircleAvatar(
-                              radius: 40,
-                            ),
-                            const Text(
-                              'Full Name',
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  // color: Color(0xff388A75),
-                                  fontFamily: 'Rockwell',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, '/student-profile');
-                                },
-                                child: const Icon(
-                                    Icons.arrow_forward_ios_rounded,
-                                    size: 30,
-                                    color: Colors.white),
-                                style: TextButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 60, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                child:
+                                    Image.asset('images/teacher-profile.png'),
+                                radius: 40,
+                              ),
+                              const TUserGet(),
+                              Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: const Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      size: 30,
+                                      color: Colors.white),
+                                  style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 45,
@@ -287,3 +282,20 @@ class _SettingsState extends State<Settings> {
     );
   }
 }
+// Padding(
+//                               padding: const EdgeInsets.all(10),
+//                               child: TextButton(
+//                                 onPressed: () {
+//                                   Navigator.pushNamed(
+//                                       context, '/student-profile');
+//                                 },
+//                                 child: const Icon(
+//                                     Icons.arrow_forward_ios_rounded,
+//                                     size: 30,
+//                                     color: Colors.white),
+//                                 style: TextButton.styleFrom(
+//                                   shape: RoundedRectangleBorder(
+//                                       borderRadius: BorderRadius.circular(50)),
+//                                 ),
+//                               ),
+//                             ),
