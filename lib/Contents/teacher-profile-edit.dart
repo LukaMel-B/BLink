@@ -35,6 +35,8 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
   getItemAndNavigate(BuildContext context) {
     try {
       final details = _fireStore.collection("users").doc(loggedUser).update({
+        "fullName": name.text,
+        "phone": mobile.text,
         "Department": dept.text,
         "Subject": subject.text,
         "AlternateMobileNumber": altMobile.text,
@@ -60,7 +62,6 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserID();
   }
@@ -185,7 +186,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                               child: Formfield(
                                 controllers: subject,
                                 hintText: "Subject",
-                                type: TextInputType.number,
+                                type: TextInputType.text,
                               ),
                             ),
                           ),

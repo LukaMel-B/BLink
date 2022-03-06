@@ -31,19 +31,19 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: ((context) => const Student1())));
           break;
-        case 'Teacher':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Parent1())));
-          break;
-        case 'teacher':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Parent1())));
-          break;
         case 'Parent':
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: ((context) => const Parent1())));
+          break;
+        case 'parent':
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: ((context) => const Parent1())));
+          break;
+        case 'Teacher':
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: ((context) => const Teacher1())));
           break;
-        case 'parent':
+        case 'teacher':
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: ((context) => const Teacher1())));
           break;

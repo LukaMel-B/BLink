@@ -1,3 +1,4 @@
+import 'package:blink/Contents/Dashboard/Teacher/TeacherSideBarLayout.dart';
 import 'package:blink/Contents/teacher-profile-edit.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/Contents/functions/profileView.dart';
@@ -189,7 +190,11 @@ class _TeacherProfileState extends State<TeacherProfile> {
                                 const EdgeInsets.only(bottom: 10, right: 15),
                             child: TextButton(
                               onPressed: () {
-                                //Navigator.pushNamed(context, '/StudentProfile');
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) =>
+                                            const TeacherSBLayout())));
                               },
                               child: const Icon(Icons.arrow_forward_rounded,
                                   size: 30, color: Colors.white),

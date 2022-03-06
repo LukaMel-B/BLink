@@ -1,6 +1,6 @@
+import 'package:blink/Contents/Dashboard/Teacher/TeacherSideBarLayout.dart';
 import 'package:blink/Contents/SignUp.dart';
 import 'package:blink/Contents/signup_controller.dart';
-import 'package:blink/Contents/teachers-profile-view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'functions/const.dart';
@@ -31,7 +31,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(context,
-          MaterialPageRoute(builder: ((context) => const TeacherProfile())));
+          MaterialPageRoute(builder: ((context) => const TeacherSBLayout())));
       setState(() {
         _isLoading = false;
       });
