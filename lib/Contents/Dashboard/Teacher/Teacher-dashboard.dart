@@ -21,24 +21,17 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
             children: [
               Expanded(
                   child: ListView(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 85, top: 48),
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(left: 33, top: 100),
                     child: Text(
                       'Dashboard',
-                      style: TextStyle(fontFamily: 'Rockwell', fontSize: 30),
+                      style: TextStyle(fontFamily: 'Rockwell', fontSize: 32),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 29, right: 29, top: 50),
+                  Padding(
+                    padding: EdgeInsets.only(left: 29, right: 29),
                     child: TeacgerToggleBar(),
-                  ),
-                  Divider(
-                    height: 57,
-                    thickness: 0.5,
-                    color: Colors.teal.withOpacity(0.2),
-                    indent: 32,
-                    endIndent: 32,
                   ),
                 ],
               ))

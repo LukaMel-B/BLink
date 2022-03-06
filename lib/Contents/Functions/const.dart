@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 const kTextFieldDecoration = BoxDecoration(
-  gradient: LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [Color(0xffF9FFED), Color(0xffA4DADA)]),
+  gradient:
+      LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter,
+          // colors: [Color(0xffF6F9F0), Color(0xffB8D9D9)]),
+          colors: [Color(0xffF9FFED), Color(0xffA4DADA)]),
 );
 const kTextFieldDecoration2 = BoxDecoration(
   gradient: LinearGradient(

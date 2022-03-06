@@ -69,7 +69,7 @@ class _TeacherNavBarState extends State<TeacherNavBar>
                   child: TNavBar(),
                 ),
                 Align(
-                  alignment: const Alignment(0, -0.9),
+                  alignment: const Alignment(0, -0.93),
                   child: GestureDetector(
                     onTap: () {
                       onIconPressed();
