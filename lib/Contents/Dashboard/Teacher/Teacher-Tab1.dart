@@ -14,7 +14,7 @@ class Tab1 extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 10, right: 10, top: 10, bottom: 10),
+                    left: 10, right: 10, top: 35, bottom: 20),
                 child: Row(
                   children: const [
                     ClassContainer(
@@ -26,6 +26,44 @@ class Tab1 extends StatelessWidget {
                     ),
                     ClassContainer(
                       image: 'images/Sem-2.png',
+                      title: '2nd Semester',
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, top: 20, bottom: 20),
+                child: Row(
+                  children: const [
+                    ClassContainer(
+                      image: 'images/Sem-3.png',
+                      title: '1st Semester',
+                    ),
+                    SizedBox(
+                      width: 35,
+                    ),
+                    ClassContainer(
+                      image: 'images/Sem-4.png',
+                      title: '2nd Semester',
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, top: 20, bottom: 40),
+                child: Row(
+                  children: const [
+                    ClassContainer(
+                      image: 'images/Sem-5.png',
+                      title: '1st Semester',
+                    ),
+                    SizedBox(
+                      width: 35,
+                    ),
+                    ClassContainer(
+                      image: 'images/Sem-6.png',
                       title: '2nd Semester',
                     )
                   ],

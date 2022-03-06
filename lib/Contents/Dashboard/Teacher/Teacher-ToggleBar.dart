@@ -32,10 +32,11 @@ class _TeacgerToggleBarState extends State<TeacgerToggleBar>
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        height: 520,
+        // color: Colors.black,
+        height: 510,
         child: Column(
           children: [
-            SizedBox(height: 15),
+            SizedBox(height: 30),
             Container(
               // height: 50,
               width: MediaQuery.of(context).size.height,
@@ -62,7 +63,7 @@ class _TeacgerToggleBarState extends State<TeacgerToggleBar>
                       borderRadius: BorderRadius.circular(35),
                     ),
                     controller: tabController,
-                    tabs: [
+                    tabs: const [
                       Tab(
                         text: 'Mathematics',
                       ),
@@ -74,13 +75,13 @@ class _TeacgerToggleBarState extends State<TeacgerToggleBar>
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Expanded(
               child: TabBarView(
                 controller: tabController,
-                children: [
+                children: const [
                   Tab1(),
                   Tab2(),
                 ],

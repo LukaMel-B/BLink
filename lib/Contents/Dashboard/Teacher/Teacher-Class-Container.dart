@@ -25,8 +25,8 @@ class ClassContainer extends StatelessWidget {
             ),
             const Divider(
               height: 0,
-              thickness: 1.5,
-              color: Color(0xff74AA9C),
+              thickness: 1.1,
+              color: Color(0xff4D907F),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 13),
