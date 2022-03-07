@@ -43,12 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
               context,
               MaterialPageRoute(
                   builder: ((context) => const TeacherSBLayout())));
+          // builder: ((context) => const Student1())));
           break;
         case 'teacher':
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                   builder: ((context) => const TeacherSBLayout())));
+          //builder: ((context) => const Student1())));
           break;
       }
     }

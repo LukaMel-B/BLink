@@ -1,6 +1,7 @@
-import 'package:blink/Contents/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../student-profile-view.dart';
 
 class StudentDashboard extends StatefulWidget {
   const StudentDashboard({Key? key}) : super(key: key);
@@ -23,12 +24,11 @@ class _StudentDashboardState extends State<StudentDashboard> {
           child: Padding(
             padding: const EdgeInsets.only(bottom: 25, right: 15),
             child: TextButton(
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (BuildContext context) => const Landing(),
+                    builder: (BuildContext context) => const StudentProfile(),
                   ),
                 );
               },

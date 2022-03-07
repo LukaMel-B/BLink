@@ -33,31 +33,32 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
   final adNo = TextEditingController();
   final dept = TextEditingController();
   getItemAndNavigate(BuildContext context) async {
-    try {
-      String imageUrl = "";
-      if (pickedFile != null) {
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child('users')
-            .child('$loggedUser.jpg');
-        await ref.putFile(pickedFile!);
-        imageUrl = await ref.getDownloadURL();
-      }
+    print(
+        "-----------------------------------------------------------------$pickedFile");
+    String imageUrl = "";
+    if (pickedFile != null) {
       print(
-          "-----------------------------------------------------------------$loggedUser");
-      final details = _fireStore.collection("users").doc(loggedUser).update({
-        "GuardianName": gName.text,
-        "Department": dept.text,
-        "Year": yr.text,
-        "AdmissionNumber": adNo.text,
-        "UserPicture": imageUrl,
-      });
-
-      Navigator.push(
-          context, MaterialPageRoute(builder: ((context) => StudentProfile())));
-    } catch (e) {
-      print(e);
+          "-----------------------------------------------------------------$pickedFile");
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('users')
+          .child('$loggedUser.jpg');
+      await ref.putFile(pickedFile!);
+      imageUrl = await ref.getDownloadURL();
     }
+    print(
+        "-----------------------------------------------------------------$loggedUser");
+    final details = _fireStore.collection("users").doc(loggedUser).update({
+      "fullName": name.text,
+      "GuardianName": gName.text,
+      "Department": dept.text,
+      "Year": yr.text,
+      "AdmissionNumber": adNo.text,
+      "UserPicture": imageUrl,
+    });
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: ((context) => StudentProfile())));
   }
 
   void getUserID() async {
