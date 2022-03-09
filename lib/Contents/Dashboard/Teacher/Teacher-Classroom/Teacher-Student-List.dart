@@ -54,13 +54,13 @@ class TeacherStudentList extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 30, right: 30),
-            child: NotificationListener<OverscrollIndicatorNotification>(
-              onNotification: (overScroll) {
-                overScroll.disallowIndicator();
-                return true;
-              },
-              child: SizedBox(
-                height: 580,
+            child: SizedBox(
+              height: 650,
+              child: NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (overScroll) {
+                  overScroll.disallowIndicator();
+                  return true;
+                },
                 child: ListView(
                   children: const [
                     StudentListCard(
@@ -103,7 +103,7 @@ class TeacherStudentList extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ]),
       ),
     ));

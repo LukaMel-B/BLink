@@ -32,15 +32,12 @@ class NoticeCard extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    width: 15,
-                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -70,32 +67,55 @@ class NoticeCard extends StatelessWidget {
                     time,
                     style: const TextStyle(
                       fontSize: 17,
-                      fontFamily: 'Rockwell',
+                      fontFamily: 'Poppins',
                       color: Color(0xff716A6A),
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 40,
               ),
               const Divider(
                 height: 0,
                 thickness: 1.1,
                 color: Color(0xff4D907F),
               ),
-              Image.asset(
-                image,
-                height: 102,
-                width: 106,
-              ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Center(
-                  child: Text(
-                    teacher,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontFamily: 'Rockwell',
+                padding: const EdgeInsets.only(top: 15, left: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      image,
+                      height: 50,
+                      width: 50,
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 6),
+                      child: Center(
+                        child: Text(
+                          teacher,
+                          style: const TextStyle(
+                            fontSize: 17,
+                            fontFamily: 'Rockwell',
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 70,
+                    ),
+                    Text(
+                      sub,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'Poppins',
+                        color: Color(0xff716A6A),
+                      ),
+                    ),
+                  ],
                 ),
               )
             ],
