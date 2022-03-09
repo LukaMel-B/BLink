@@ -1,3 +1,4 @@
+import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Timeline.dart';
 import 'package:flutter/material.dart';
 
 class TeacherTimeTable extends StatefulWidget {
@@ -10,6 +11,17 @@ class TeacherTimeTable extends StatefulWidget {
 class _TeacherTimeTableState extends State<TeacherTimeTable> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: SafeArea(
+          child: Container(
+        child: Column(
+          children: const [
+            Expanded(
+              child: Timeline(),
+            )
+          ],
+        ),
+      )),
+    );
   }
 }

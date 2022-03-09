@@ -121,7 +121,7 @@ class _TeacherNoticeState extends State<TeacherNotice> {
                         NoticeCard(
                             title: 'Unit Test',
                             subtitle: 'Monday',
-                            teacher: 'Olivia Williams',
+                            teacher: 'Olivia Victim',
                             sub: 'Unit 3',
                             image: 'images/teachers-pic-5.png',
                             time: '08:00 PM')

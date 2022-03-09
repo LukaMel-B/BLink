@@ -31,64 +31,62 @@ class _TeacgerToggleBarState extends State<TeacgerToggleBar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        // color: Colors.black,
-        height: 510,
-        child: Column(
-          children: [
-            SizedBox(height: 30),
-            Container(
-              // height: 50,
-              width: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xffE8F8E9), Color(0xffE2F5E8)]),
-                  borderRadius: BorderRadius.circular(35)),
-              child: Column(
-                children: [
-                  TabBar(
-                    unselectedLabelColor: const Color(0xff4BA0A0),
-                    labelColor: Colors.white,
-                    labelStyle: const TextStyle(
-                        fontFamily: 'Rockwell',
-                        fontSize: 14.5,
-                        letterSpacing: 1.2,
-                        fontWeight: FontWeight.w600),
-                    indicatorColor: Colors.white,
-                    indicatorWeight: 2,
-                    indicator: BoxDecoration(
-                      color: const Color(0xff4FB4AD),
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    controller: tabController,
-                    tabs: const [
-                      Tab(
-                        text: 'Mathematics',
-                      ),
-                      Tab(
-                        text: 'Computer Science',
-                      ),
-                    ],
+      // color: Colors.black,
+      height: 590,
+      child: Column(
+        children: [
+          const SizedBox(height: 30),
+          Container(
+            // height: 50,
+            width: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xffE8F8E9), Color(0xffE2F5E8)]),
+                borderRadius: BorderRadius.circular(35)),
+            child: Column(
+              children: [
+                TabBar(
+                  unselectedLabelColor: const Color(0xff4BA0A0),
+                  labelColor: Colors.white,
+                  labelStyle: const TextStyle(
+                      fontFamily: 'Rockwell',
+                      fontSize: 14.5,
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.w600),
+                  indicatorColor: Colors.white,
+                  indicatorWeight: 2,
+                  indicator: BoxDecoration(
+                    color: const Color(0xff4FB4AD),
+                    borderRadius: BorderRadius.circular(35),
                   ),
-                ],
-              ),
+                  controller: tabController,
+                  tabs: const [
+                    Tab(
+                      text: 'Mathematics',
+                    ),
+                    Tab(
+                      text: 'Computer Science',
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 25,
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: tabController,
+              children: const [
+                Tab1(),
+                Tab2(),
+              ],
             ),
-            Expanded(
-              child: TabBarView(
-                controller: tabController,
-                children: const [
-                  Tab1(),
-                  Tab2(),
-                ],
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

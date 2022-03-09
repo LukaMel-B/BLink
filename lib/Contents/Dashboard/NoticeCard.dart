@@ -19,14 +19,14 @@ class NoticeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 10),
         child: Container(
           height: 180,
           width: 136,
           decoration: BoxDecoration(
-            color: const Color(0xffECF5F3),
+            color: Colors.white.withOpacity(0.4),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(

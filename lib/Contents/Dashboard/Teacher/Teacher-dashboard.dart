@@ -37,7 +37,8 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 14, right: 25),
+                      padding:
+                          const EdgeInsets.only(top: 20, bottom: 14, right: 25),
                       child: TextButton(
                         onPressed: () {},
                         child: Image.asset(
