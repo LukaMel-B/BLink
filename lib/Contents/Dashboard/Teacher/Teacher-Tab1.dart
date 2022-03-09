@@ -1,4 +1,5 @@
 import 'package:blink/Contents/Dashboard/Teacher/Teacher-Class-Container.dart';
+import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Classroom-Main.dart';
 import 'package:flutter/material.dart';
 
 import '../../teachers-profile-view.dart';
@@ -27,7 +28,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-1.png',
                         title: '1st Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       ),
                       SizedBox(
                         width: 35,
