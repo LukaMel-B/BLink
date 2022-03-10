@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import 'TeacherAttenceTabs.dart';
+
 // import 'Teacher-Tab1.dart';
 // import 'Teacher-Tab2.dart';
 
@@ -37,7 +39,7 @@ class _AttendanceToggleBarState extends State<AttendanceToggleBar>
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: Column(
           children: [
-            const SizedBox(height: 30),
+            const SizedBox(height: 5),
             Container(
               // height: 50,
               width: MediaQuery.of(context).size.height,
@@ -110,16 +112,16 @@ class _AttendanceToggleBarState extends State<AttendanceToggleBar>
               child: TabBarView(
                 controller: tabController,
                 children: const [
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
-                  Text("data"),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
+                  TeacherAttendanceTabs(),
                 ],
               ),
             )
