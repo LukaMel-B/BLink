@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:timelines/timelines.dart';
 
 class Timeline extends StatelessWidget {
   const Timeline({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: ListView.builder(
+    return
+        // Timeline.tileBuilder(
+        //   builder: TimelineTileBuilder.fromStyle(
+        //     contentsAlign: ContentsAlign.alternating,
+        //     contentsBuilder: (context, index) => Padding(
+        //       padding: const EdgeInsets.all(24.0),
+        //       child: Text('Timeline Event $index'),
+        //     ),
+        //     itemCount: 10,
+        //   ),
+        // );
+
+        Container(
+            child: ListView.builder(
       itemBuilder: (BuildContext context, int index) {
         return Stack(
           children: <Widget>[

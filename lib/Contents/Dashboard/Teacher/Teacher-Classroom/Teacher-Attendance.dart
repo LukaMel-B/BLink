@@ -1,3 +1,4 @@
+import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Date-ToggleBar.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
@@ -78,8 +79,9 @@ class _TeacherAttendanceState extends State<TeacherAttendance> {
                         ),
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 20,
                       ),
+                      const AttendanceToggleBar()
                     ]),
               ))),
     );
