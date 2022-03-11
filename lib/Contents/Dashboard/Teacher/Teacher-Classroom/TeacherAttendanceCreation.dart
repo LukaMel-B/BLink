@@ -1,4 +1,7 @@
+import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/AttendanceChecklistCard.dart';
 import 'package:blink/Contents/Functions/const.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'Teacher-Attendance.dart';
@@ -56,7 +59,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                             hintStyle:
                                 const TextStyle(color: Color(0xffABAAAA)),
                             hintText: 'Period',
-                            fillColor: const Color(0xffFDF9F9).withOpacity(0.9),
+                            fillColor: const Color(0xffFDF9F9).withOpacity(0.5),
                           ),
                           keyboardType: TextInputType.text,
                         ),
@@ -83,7 +86,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                                   const TextStyle(color: Color(0xffABAAAA)),
                               hintText: 'Date(Hint:08)',
                               fillColor:
-                                  const Color(0xffFDF9F9).withOpacity(0.9),
+                                  const Color(0xffFDF9F9).withOpacity(0.5),
                             ),
                             keyboardType: TextInputType.number,
                           ),
@@ -103,45 +106,170 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 40, top: 40, right: 40, bottom: 30),
-                      child: ListView(
-                        children: const [
-                          Text(
-                            'Attendance',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                // color: Color(0xff388A75),
-                                fontFamily: 'Rockwell',
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          Text(
-                            'Attendance',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                // color: Color(0xff388A75),
-                                fontFamily: 'Rockwell',
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          Text(
-                            'Attendance',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                // color: Color(0xff388A75),
-                                fontFamily: 'Rockwell',
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          Text(
-                            'Attendance',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                // color: Color(0xff388A75),
-                                fontFamily: 'Rockwell',
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal),
-                          ),
-                        ],
+                      child:
+                          NotificationListener<OverscrollIndicatorNotification>(
+                        onNotification: (overScroll) {
+                          overScroll.disallowIndicator();
+                          return true;
+                        },
+                        child: ListView(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Louis Barell', style: teacherattndnctxt),
+                                TeacherAttendanceChechlistCard()
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -151,11 +279,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) =>
-                                    const TeacherAttendance())));
+                        Navigator.pop(context);
                       },
                       child: const Icon(Icons.done,
                           size: 45, color: Color(0xff299A97)),

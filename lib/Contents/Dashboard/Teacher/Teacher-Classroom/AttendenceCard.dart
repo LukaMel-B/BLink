@@ -125,7 +125,7 @@ class AttendanceCard extends StatelessWidget {
                             color: Colors.black,
                           ),
                           const Text(
-                            '30',
+                            '22',
                             style: TextStyle(
                               fontSize: 17,
                               fontFamily: 'Rockwell',

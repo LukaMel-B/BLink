@@ -51,29 +51,12 @@ class _TeacherProfileState extends State<TeacherProfile> {
         altMobileHolder =
             detail.data()?['AlternateMobileNumber'] ?? "AlternateMobileNumber";
       });
-    } else {
-      var message = 'Not loggedIn';
-      final snackBar = SnackBar(
-        content: Text(
-          message,
-          style: const TextStyle(
-              color: Color(0xffABAAAA),
-              // color: Color(0xff388A75),y
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w500,
-              fontSize: 15),
-        ),
-        backgroundColor: const Color(0xffF9FFED),
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
   SignUpController signUpController = Get.put(SignUpController());
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserID();
     getDetails(loggedUser);

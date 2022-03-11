@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+const teacherattndnctxt = TextStyle(
+    // color: Colors.black87,
+    color: Color(0xff696868),
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    fontWeight: FontWeight.normal);
 const kTextFieldDecoration = BoxDecoration(
   gradient:
       LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter,
