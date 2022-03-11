@@ -1,5 +1,7 @@
 import 'package:blink/Contents/parent-profile-edit.dart';
+import 'package:blink/Contents/signup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:blink/Contents/functions/profileView.dart';
@@ -61,6 +63,8 @@ class _ParentProfileState extends State<ParentProfile> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+
+  SignUpController signUpController = Get.put(SignUpController());
 
   @override
   void initState() {

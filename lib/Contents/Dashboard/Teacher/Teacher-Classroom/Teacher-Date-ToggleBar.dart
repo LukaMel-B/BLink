@@ -34,7 +34,7 @@ class _AttendanceToggleBarState extends State<AttendanceToggleBar>
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.black,
-      height: 590,
+      height: 650,
       child: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: Column(

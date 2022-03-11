@@ -1,11 +1,13 @@
 import 'package:blink/Contents/Dashboard/Teacher/TeacherSideBarLayout.dart';
 import 'package:blink/Contents/teacher-profile-edit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:blink/Contents/functions/profileView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'functions/const.dart';
+import 'signup_controller.dart';
 
 class TeacherProfile extends StatefulWidget {
   const TeacherProfile({Key? key}) : super(key: key);
@@ -68,6 +70,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
     }
   }
 
+  SignUpController signUpController = Get.put(SignUpController());
   @override
   void initState() {
     // TODO: implement initState

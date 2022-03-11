@@ -2,6 +2,8 @@ import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Date-
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
+import 'TeacherAttendanceCreation.dart';
+
 class TeacherAttendance extends StatefulWidget {
   const TeacherAttendance({Key? key}) : super(key: key);
 
@@ -59,11 +61,13 @@ class _TeacherAttendanceState extends State<TeacherAttendance> {
                             ),
                             TextButton(
                               onPressed: () {
-                                //Navigator.pushNamed(context, '/StudentLogin');
-                                // Navigator.push(context,
-                                //     MaterialPageRoute(builder: ((context) => nav)));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) =>
+                                            const TeacherAttendanceCreate())));
                               },
-                              child: Icon(Icons.add,
+                              child: const Icon(Icons.add,
                                   size: 45, color: Color(0xff299A97)),
                               style: TextButton.styleFrom(
                                   shape: RoundedRectangleBorder(
