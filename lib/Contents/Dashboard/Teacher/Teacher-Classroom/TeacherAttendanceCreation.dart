@@ -1,12 +1,13 @@
 import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/AttendanceChecklistCard.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'Teacher-Attendance.dart';
 
 class TeacherAttendanceCreate extends StatefulWidget {
-  TeacherAttendanceCreate({Key? key}) : super(key: key);
+  const TeacherAttendanceCreate({Key? key}) : super(key: key);
 
   @override
   State<TeacherAttendanceCreate> createState() =>
@@ -14,16 +15,38 @@ class TeacherAttendanceCreate extends StatefulWidget {
 }
 
 class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
+  bool _checkbox = false;
+  final _auth = FirebaseAuth.instance;
+  final _fireStore = FirebaseFirestore.instance;
   final period = TextEditingController();
   final day = TextEditingController();
-  _addAttendance(BuildContext context) async {
+  @override
+  void initState() {
+    setState(() {
+      attends = 0;
+    });
+    super.initState();
+  }
+
+  // void add() {
+  //   if (_checkbox == true) {
+  //     attends = attends++;
+  //     print(attends);
+  //   } else {
+  //     attends = attends--;
+  //     print(attends);
+  //   }
+  // }
+
+  _addAttendance() {
     FirebaseFirestore.instance
         .collection('Attendance')
         .doc(DateTime.now().toString())
         .set({
       'date': DateTime.now(),
-      'day': day.text,
+      'present': attends,
       'period': period.text,
+      'day': day.text,
     });
     Navigator.push(context,
         MaterialPageRoute(builder: ((context) => const TeacherAttendance())));
@@ -132,156 +155,254 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Louis Barell', style: teacherattndnctxt),
-                                TeacherAttendanceChechlistCard()
+                                Container(
+                                  child: Checkbox(
+                                    focusColor: const Color(0xff4FB4AD),
+                                    activeColor: const Color(0xff4FB4AD),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    value: _checkbox,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _checkbox = !_checkbox;
+                                        // add();
+                                      });
+                                    },
+                                  ),
+                                )
                               ],
                             ),
                           ],
@@ -295,7 +416,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        _addAttendance(context);
+                        _addAttendance();
                       },
                       child: const Icon(Icons.done,
                           size: 45, color: Color(0xff299A97)),

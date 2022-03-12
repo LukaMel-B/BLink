@@ -24,6 +24,16 @@ class _TeacherAttendanceChechlistCardState
     }
   }
 
+  _addAttendance() {
+    FirebaseFirestore.instance
+        .collection('Attendance')
+        .doc(DateTime.now().toString())
+        .set({
+      'date': DateTime.now(),
+      'present': attends,
+    });
+  }
+
   @override
   void initState() {
     setState(() {
