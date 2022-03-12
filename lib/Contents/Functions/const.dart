@@ -8,7 +8,10 @@ const teacherattndnctxt = TextStyle(
     fontWeight: FontWeight.normal);
 
 const timetabletext = TextStyle(
-    fontFamily: 'Rockwell', fontSize: 17, fontWeight: FontWeight.bold);
+    color: Colors.black,
+    fontFamily: 'Rockwell',
+    fontSize: 17,
+    fontWeight: FontWeight.bold);
 
 const timetablenum = TextStyle(
     fontFamily: 'Rockwell', fontSize: 27, fontWeight: FontWeight.w400);
