@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class TeacherAttendanceChechlistCard extends StatefulWidget {
@@ -21,6 +22,14 @@ class _TeacherAttendanceChechlistCardState
       attends = attends - 1;
       print(attends);
     }
+  }
+
+  @override
+  void initState() {
+    setState(() {
+      attends = 0;
+    });
+    super.initState();
   }
 
   @override

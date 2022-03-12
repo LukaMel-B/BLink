@@ -6,6 +6,13 @@ const teacherattndnctxt = TextStyle(
     fontFamily: 'Roboto',
     fontSize: 20,
     fontWeight: FontWeight.normal);
+
+const timetabletext = TextStyle(
+    fontFamily: 'Rockwell', fontSize: 17, fontWeight: FontWeight.bold);
+
+const timetablenum = TextStyle(
+    fontFamily: 'Rockwell', fontSize: 27, fontWeight: FontWeight.w400);
+
 const kTextFieldDecoration = BoxDecoration(
   gradient:
       LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter,

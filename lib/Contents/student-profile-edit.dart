@@ -27,7 +27,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
   SignUpController signUpController = Get.find();
 
   final name = TextEditingController();
-  final gName = TextEditingController();
+  final gMail = TextEditingController();
   final emails = TextEditingController();
   final yr = TextEditingController();
   final adNo = TextEditingController();
@@ -50,15 +50,15 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
         "-----------------------------------------------------------------$loggedUser");
     final details = _fireStore.collection("users").doc(loggedUser).update({
       "fullName": name.text,
-      "GuardianName": gName.text,
+      "GuardianMail": gMail.text,
       "Department": dept.text,
       "Year": yr.text,
       "AdmissionNumber": adNo.text,
       "UserPicture": imageUrl,
     });
 
-    Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => StudentProfile())));
+    Navigator.push(context,
+        MaterialPageRoute(builder: ((context) => const StudentProfile())));
   }
 
   void getUserID() async {
@@ -172,9 +172,9 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                       padding: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: gName,
-                          hintText: "Guardian Name",
-                          type: TextInputType.name),
+                          controllers: gMail,
+                          hintText: "Guardian Email(Parent email)",
+                          type: TextInputType.emailAddress),
                     ),
                     Padding(
                       padding:

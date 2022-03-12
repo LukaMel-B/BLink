@@ -64,37 +64,37 @@ class TeacherStudentList extends StatelessWidget {
                 child: ListView(
                   children: const [
                     StudentListCard(
-                      dept: 'Computer Science',
+                      dept: 'Mathematics',
                       image: 'images/student-1.jpg',
                       name: 'Louis Barell',
                       rollNo: 'Roll no: 61',
                     ),
                     StudentListCard(
-                      dept: 'Computer Science',
+                      dept: 'Mathematics',
                       image: 'images/student-4.jpg',
                       name: 'Jane Lovey',
                       rollNo: 'Roll no: 62',
                     ),
                     StudentListCard(
-                      dept: 'Computer Science',
+                      dept: 'Mathematics',
                       image: 'images/student-5.jpg',
                       name: 'John Lind',
                       rollNo: 'Roll no: 63',
                     ),
                     StudentListCard(
-                      dept: 'Computer Science',
+                      dept: 'Mathematics',
                       image: 'images/student-3.jpg',
                       name: 'Amy Admas',
                       rollNo: 'Roll no: 64',
                     ),
                     StudentListCard(
-                      dept: 'Computer Science',
+                      dept: 'Mathematics',
                       image: 'images/student-2.jpg',
                       name: 'Jack Daniel',
                       rollNo: 'Roll no: 65',
                     ),
                     StudentListCard(
-                      dept: 'Computer Science',
+                      dept: 'Mathematics',
                       image: 'images/student-6.jpg',
                       name: 'Natasha',
                       rollNo: 'Roll no: 65',

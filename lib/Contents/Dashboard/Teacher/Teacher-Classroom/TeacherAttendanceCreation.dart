@@ -1,13 +1,12 @@
 import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/AttendanceChecklistCard.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'Teacher-Attendance.dart';
 
 class TeacherAttendanceCreate extends StatefulWidget {
-  const TeacherAttendanceCreate({Key? key}) : super(key: key);
+  TeacherAttendanceCreate({Key? key}) : super(key: key);
 
   @override
   State<TeacherAttendanceCreate> createState() =>
@@ -15,6 +14,21 @@ class TeacherAttendanceCreate extends StatefulWidget {
 }
 
 class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
+  final period = TextEditingController();
+  final day = TextEditingController();
+  _addAttendance(BuildContext context) async {
+    FirebaseFirestore.instance
+        .collection('Attendance')
+        .doc(DateTime.now().toString())
+        .set({
+      'date': DateTime.now(),
+      'day': day.text,
+      'period': period.text,
+    });
+    Navigator.push(context,
+        MaterialPageRoute(builder: ((context) => const TeacherAttendance())));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +75,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                             hintText: 'Period',
                             fillColor: const Color(0xffFDF9F9).withOpacity(0.5),
                           ),
+                          controller: period,
                           keyboardType: TextInputType.text,
                         ),
                       ),
@@ -84,11 +99,12 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                               filled: true,
                               hintStyle:
                                   const TextStyle(color: Color(0xffABAAAA)),
-                              hintText: 'Date(Hint:08)',
+                              hintText: 'Day(Mon,tue..)',
                               fillColor:
                                   const Color(0xffFDF9F9).withOpacity(0.5),
                             ),
-                            keyboardType: TextInputType.number,
+                            controller: day,
+                            keyboardType: TextInputType.name,
                           ),
                         ),
                       ),
@@ -279,7 +295,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        _addAttendance(context);
                       },
                       child: const Icon(Icons.done,
                           size: 45, color: Color(0xff299A97)),

@@ -60,7 +60,7 @@ class _AttendanceToggleBarState extends State<AttendanceToggleBar>
                   labelColor: Colors.white,
                   labelStyle: const TextStyle(
                       fontFamily: 'Rockwell',
-                      fontSize: 14.5,
+                      fontSize: 17,
                       letterSpacing: 1.2,
                       fontWeight: FontWeight.w600),
                   indicatorColor: Colors.white,

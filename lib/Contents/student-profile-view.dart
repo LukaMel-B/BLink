@@ -41,13 +41,13 @@ class _StudentProfileState extends State<StudentProfile> {
       final detail = await _fireStore.collection("users").doc(user).get();
       setState(() {
         nameHolder = detail.data()?['fullName'] ?? "name";
-        parentHolder = detail.data()?['GuardianName'] ?? "parent name";
+        parentHolder = detail.data()?['GuardianMail'] ?? "Parent Mail";
         deptHolder = detail.data()?['Department'] ?? "department";
         emailHolder = detail.data()?['email'] ?? "email";
         yearHolder = detail.data()?['Year'] ?? "year";
         adHolder = detail.data()?['AdmissionNumber'] ?? "admission number";
         imageUrl =
-            detail.data()?['UserPicture'] ?? "images/student-profile.png";
+            detail.data()?['UserPicture'] ?? 'images/student-profile.png';
         print(
             "-----------------------------------------------------------------$imageUrl");
       });
@@ -182,13 +182,7 @@ class _StudentProfileState extends State<StudentProfile> {
                                 const EdgeInsets.only(bottom: 10, left: 25),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        const StudentProfileEdit(),
-                                  ),
-                                );
+                                Navigator.pop(context);
                               },
                               child: const Text(
                                 ' Edit Profile',
