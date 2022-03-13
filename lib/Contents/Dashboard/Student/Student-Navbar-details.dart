@@ -2,10 +2,10 @@ import 'package:blink/Contents/Dashboard/Teacher/TUser-get.dart';
 import 'package:blink/Contents/Dashboard/Teacher/Teacher-MenuItem.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:blink/Contents/setting.dart';
+import 'package:blink/Contents/student-profile-view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../teachers-profile-view.dart';
 
 class StudentNavbarDetails extends StatefulWidget {
   const StudentNavbarDetails({Key? key}) : super(key: key);
@@ -53,12 +53,8 @@ class _StudentNavbarDetailsState extends State<StudentNavbarDetails> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              child: Image.asset('images/circle-pic-2.png'),
-                              radius: 40,
-                            ),
-                            const TUserGet(),
+                          children: const [
+                            TUserGet(),
                           ],
                         ),
                       ),
@@ -75,7 +71,7 @@ class _StudentNavbarDetailsState extends State<StudentNavbarDetails> {
                               context,
                               MaterialPageRoute(
                                   builder: ((context) =>
-                                      const TeacherProfile())));
+                                      const StudentProfile())));
                         },
                         child: const MenuItem(
                           icon: Icons.person,

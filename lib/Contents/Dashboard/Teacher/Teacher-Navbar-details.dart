@@ -53,12 +53,8 @@ class _TNavBarState extends State<TNavBar> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              child: Image.asset('images/teacher-profile.png'),
-                              radius: 40,
-                            ),
-                            const TUserGet(),
+                          children: const [
+                            TUserGet(),
                           ],
                         ),
                       ),

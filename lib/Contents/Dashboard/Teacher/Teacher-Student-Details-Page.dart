@@ -2,6 +2,8 @@ import 'package:blink/Contents/Functions/ProfileView.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
+import 'Teacher-Classroom/Teacher-Student-progress-page.dart';
+
 class TeacherStudentDetailsPage extends StatefulWidget {
   final String name;
   final String parent;
@@ -136,11 +138,11 @@ class _TeacherStudentDetailsPageState extends State<TeacherStudentDetailsPage> {
                       padding: const EdgeInsets.only(bottom: 10, left: 55),
                       child: TextButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: ((context) =>
-                          //             const TeacherSBLayout())));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const StudentProgressPremium())));
                         },
                         child: Row(
                           children: const [

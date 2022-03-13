@@ -4,6 +4,7 @@ import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Class
 import 'package:flutter/material.dart';
 
 import '../../teachers-profile-view.dart';
+import 'Student-Assignment-View.dart';
 
 class StudentTab1 extends StatelessWidget {
   const StudentTab1({Key? key}) : super(key: key);
@@ -65,13 +66,18 @@ class StudentTab1 extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         SizedBox(
           width: 160,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const StudentAssignmentView())));
+            },
             child: Row(
               children: const [
                 Icon(Icons.assignment, size: 35, color: Color(0xff299A97)),

@@ -23,7 +23,7 @@ class StudentSubjectCard extends StatelessWidget {
           height: 250,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.4),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(30),
           ),
           child: Column(
             children: [

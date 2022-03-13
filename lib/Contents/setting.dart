@@ -91,11 +91,6 @@ class _SettingsState extends State<Settings> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              CircleAvatar(
-                                child:
-                                    Image.asset('images/teacher-profile.png'),
-                                radius: 40,
-                              ),
                               const TUserGet(),
                               Padding(
                                 padding: const EdgeInsets.all(15),

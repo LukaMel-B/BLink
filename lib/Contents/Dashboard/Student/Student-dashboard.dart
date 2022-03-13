@@ -1,7 +1,7 @@
-import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Timetable.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
+import 'Student-Timetable.dart';
 import 'Student-Togglebar.dart';
 
 class StudentDashboard extends StatefulWidget {
@@ -23,7 +23,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 35, right: 35),
+                  padding: const EdgeInsets.only(top: 20, right: 35),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -47,7 +47,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                                 context,
                                 MaterialPageRoute(
                                     builder: ((context) =>
-                                        const TeacherTimeTable())));
+                                        const StudentTimeTable())));
                           },
                           child: Image.asset(
                             'images/calenderIcon.png',

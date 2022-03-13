@@ -34,7 +34,7 @@ class _TimelineState extends State<Timeline>
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.black,
-      height: 650,
+      height: 550,
       child: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: Column(

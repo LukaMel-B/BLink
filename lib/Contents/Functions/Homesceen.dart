@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
+                  // builder: ((context) => const StudentSBLayout())));
                   builder: ((context) => const TeacherSBLayout())));
           break;
         case 'student':
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               context,
               MaterialPageRoute(
                   builder: ((context) => const StudentSBLayout())));
+          //builder: ((context) => const TeacherSBLayout())));
           break;
         case 'Parent':
           Navigator.pushReplacement(context,

@@ -12,6 +12,7 @@ class TUserGet extends StatefulWidget {
 class _TUserGetState extends State<TUserGet> {
   String name = "fullname";
   String userType = "UserType";
+  String imageUrl = 'images/no-icon-image.png';
   final _auth = FirebaseAuth.instance;
   final _fireStore = FirebaseFirestore.instance;
   String loggedUser = "no uid";
@@ -22,6 +23,7 @@ class _TUserGetState extends State<TUserGet> {
       setState(() {
         name = detail.data()?['fullName'] ?? "Full Name";
         userType = detail.data()?['UserType'] ?? "User Type";
+        imageUrl = detail.data()?['UserPicture'] ?? 'images/no-icon-image.png';
       });
     }
   }
@@ -46,25 +48,42 @@ class _TUserGetState extends State<TUserGet> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          name,
-          style: const TextStyle(
-            fontFamily: 'Rockwell',
-            fontSize: 21,
+        SizedBox(
+          height: 85,
+          width: 85,
+          child: ClipOval(
+            child: Image.network(imageUrl),
+            // foregroundImage: NetworkImage(imageUrl),
           ),
         ),
         const SizedBox(
-          height: 6,
+          width: 15,
         ),
-        Text(
-          userType,
-          style: const TextStyle(
-            fontSize: 19,
-            color: Color(0xff716A6A),
-          ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                fontFamily: 'Rockwell',
+                fontSize: 21,
+              ),
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            Text(
+              userType,
+              style: const TextStyle(
+                fontSize: 19,
+                color: Color(0xff716A6A),
+              ),
+            ),
+          ],
         ),
       ],
     );
