@@ -3,6 +3,7 @@ import 'package:blink/Contents/setting.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../main.dart';
 import '../../teachers-profile-view.dart';
 import 'TUser-get.dart';
 import 'Teacher-MenuItem.dart';
@@ -135,5 +136,9 @@ class _TNavBarState extends State<TNavBar> {
 
   _signOut() async {
     await auth.signOut();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MyApp()),
+        (route) => false);
   }
 }

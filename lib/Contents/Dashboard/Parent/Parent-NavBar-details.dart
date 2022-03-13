@@ -5,7 +5,9 @@ import 'package:blink/Contents/setting.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
+import '../../../main.dart';
 import '../../parent-profile-view.dart';
 
 class ParentNavbarDetails extends StatefulWidget {
@@ -136,5 +138,9 @@ class _ParentNavbarDetailsState extends State<ParentNavbarDetails> {
 
   _signOut() async {
     await auth.signOut();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MyApp()),
+        (route) => false);
   }
 }

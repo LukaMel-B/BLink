@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../main.dart';
+
 class StudentNavbarDetails extends StatefulWidget {
   const StudentNavbarDetails({Key? key}) : super(key: key);
 
@@ -135,5 +137,9 @@ class _StudentNavbarDetailsState extends State<StudentNavbarDetails> {
 
   _signOut() async {
     await auth.signOut();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MyApp()),
+        (route) => false);
   }
 }
