@@ -60,13 +60,13 @@ class _StudentProgressPremiumState extends State<StudentProgressPremium> {
                   height: 30,
                 ),
                 Container(
-                  height: 450,
+                  height: 600,
                   child: Center(
                     child: SizedBox(
-                      width: 200,
-                      height: 200,
+                      width: 600,
+                      height: 600,
                       child: Lottie.network(
-                          'https://assets7.lottiefiles.com/packages/lf20_xubl6ln3.json',
+                          'https://assets4.lottiefiles.com/packages/lf20_zfnsfbks.json',
                           animate: true),
                     ),
                   ),

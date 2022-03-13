@@ -21,6 +21,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
   String altMobileHolder = "0000000000";
   String deptHolder = "department";
   String emailHolder = "email";
+  String imageUrl = "images/no-icon-image.png";
   String subjectHolder = "subject";
   String mobileHolder = "0000000000";
   final _auth = FirebaseAuth.instance;
@@ -46,6 +47,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
         nameHolder = detail.data()?['fullName'] ?? "name";
         emailHolder = detail.data()?['email'] ?? "email";
         deptHolder = detail.data()?['Department'] ?? "department";
+        imageUrl = detail.data()?['UserPicture'] ?? 'images/no-icon-image.png';
         subjectHolder = detail.data()?['Subject'] ?? "subject";
         mobileHolder = detail.data()?['phone'] ?? "phone";
         altMobileHolder =
@@ -91,9 +93,13 @@ class _TeacherProfileState extends State<TeacherProfile> {
                     const SizedBox(
                       height: 20,
                     ),
-                    CircleAvatar(
-                      radius: 55,
-                      child: Image.asset('images/teacher-profile.png'),
+                    SizedBox(
+                      height: 120,
+                      width: 120,
+                      child: ClipOval(
+                        child: Image.network(imageUrl),
+                        // foregroundImage: NetworkImage(imageUrl),
+                      ),
                     ),
                     const SizedBox(
                       height: 40,

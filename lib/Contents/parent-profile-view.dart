@@ -1,5 +1,7 @@
+import 'package:blink/Contents/Dashboard/Parent/ParentSBLayout.dart';
 import 'package:blink/Contents/parent-profile-edit.dart';
 import 'package:blink/Contents/signup_controller.dart';
+import 'package:blink/Contents/student-profile-edit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,8 +17,10 @@ class ParentProfile extends StatefulWidget {
 
 class _ParentProfileState extends State<ParentProfile> {
   String nameHolder = "name";
-  String occupationHolder = "Occupation";
-  String relationshipHolder = "Relationship";
+  String emailHolder = "Email";
+  String fnameHolder = "Father Name";
+  String imageUrl = "images/no-icon-image.png";
+  String mnameHolder = "Mother Name";
   String mobileHolder = "Mobile number";
   String alternateMobileHolder = "Alternate Mobile number";
   final _auth = FirebaseAuth.instance;
@@ -38,12 +42,14 @@ class _ParentProfileState extends State<ParentProfile> {
     if (loggedUser.length > 25) {
       final detail = await _fireStore.collection("users").doc(user).get();
       setState(() {
-        nameHolder = detail.data()?['fullName'] ?? "name";
-        occupationHolder = detail.data()?['Occupation'] ?? "Occupation";
-        relationshipHolder = detail.data()?['Relationship'] ?? "Relationship";
-        mobileHolder = detail.data()?['phone'] ?? "phone";
+        nameHolder = detail.data()?['fullName'] ?? "Name";
+        emailHolder = detail.data()?['Mail'] ?? "Email";
+        imageUrl = detail.data()?['UserPicture'] ?? 'images/no-icon-image.png';
+        fnameHolder = detail.data()?['Father Name'] ?? "Father Name";
+        mnameHolder = detail.data()?['Mother Name'] ?? "Mother Name";
+        mobileHolder = detail.data()?['Mobile number'] ?? "Mobile number";
         alternateMobileHolder =
-            detail.data()?['AlternateMobileNumber'] ?? "AlternateMobileNumber";
+            detail.data()?['Alternate number'] ?? "Alternate number";
       });
     } else {
       var message = 'Not loggedIn';
@@ -108,9 +114,13 @@ class _ParentProfileState extends State<ParentProfile> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Color(0xffFDF9F9),
+                    SizedBox(
+                      height: 120,
+                      width: 120,
+                      child: ClipOval(
+                        child: Image.network(imageUrl),
+                        // foregroundImage: NetworkImage(imageUrl),
+                      ),
                     ),
                     const SizedBox(
                       height: 40,
@@ -124,7 +134,7 @@ class _ParentProfileState extends State<ParentProfile> {
                         height: 345,
                         width: 100,
                         child: Padding(
-                          padding: const EdgeInsets.all(40),
+                          padding: const EdgeInsets.fromLTRB(40, 40, 40, 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -132,10 +142,13 @@ class _ParentProfileState extends State<ParentProfile> {
                                 text: nameHolder,
                               ),
                               ProfileView(
-                                text: occupationHolder,
+                                text: emailHolder,
                               ),
                               ProfileView(
-                                text: relationshipHolder,
+                                text: fnameHolder,
+                              ),
+                              ProfileView(
+                                text: mnameHolder,
                               ),
                               ProfileView(
                                 text: mobileHolder,
@@ -189,7 +202,11 @@ class _ParentProfileState extends State<ParentProfile> {
                                 const EdgeInsets.only(bottom: 10, right: 15),
                             child: TextButton(
                               onPressed: () {
-                                //Navigator.pushNamed(context, '/StudentProfile');
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) =>
+                                            const ParentSBLayout())));
                               },
                               child: const Icon(Icons.arrow_forward_rounded,
                                   size: 30, color: Colors.white),

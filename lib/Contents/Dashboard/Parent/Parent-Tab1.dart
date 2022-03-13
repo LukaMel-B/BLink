@@ -1,9 +1,8 @@
 import 'package:blink/Contents/Dashboard/Student/Student-SubjectCard.dart';
 import 'package:flutter/material.dart';
-import 'Student-Assignment-View.dart';
 
-class StudentTab1 extends StatelessWidget {
-  const StudentTab1({Key? key}) : super(key: key);
+class ParentTab1 extends StatelessWidget {
+  const ParentTab1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,38 +64,43 @@ class StudentTab1 extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        SizedBox(
-          width: 160,
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const StudentAssignmentView())));
-            },
-            child: Row(
-              children: const [
-                Icon(Icons.assignment, size: 35, color: Color(0xff299A97)),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  'Assignment',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Rockwell',
-                    fontSize: 17,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              onPressed: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: ((context) => const StudentAssignmentView())));
+              },
+              child: Row(
+                children: const [
+                  Icon(Icons.chat, size: 35, color: Color(0xff299A97)),
+                  SizedBox(
+                    width: 8,
                   ),
-                ),
-              ],
+                  Text(
+                    'Chat',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Rockwell',
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+              style: TextButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.67),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(13)),
+                  textStyle: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w800)),
             ),
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.white.withOpacity(0.67),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(13)),
-                textStyle:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
-          ),
+            const SizedBox(
+              width: 25,
+            )
+          ],
         )
       ],
     );

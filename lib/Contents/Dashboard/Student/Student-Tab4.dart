@@ -8,10 +8,10 @@ class StudentTab4 extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 410,
+          height: 450,
         ),
         const SizedBox(
-          height: 20,
+          height: 40,
         ),
         SizedBox(
           width: 160,

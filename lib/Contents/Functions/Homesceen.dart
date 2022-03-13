@@ -1,3 +1,4 @@
+import 'package:blink/Contents/Dashboard/Parent/ParentSBLayout.dart';
 import 'package:blink/Contents/Dashboard/Student/StudentSideBarLayout.dart';
 import 'package:blink/Contents/Dashboard/Teacher/TeacherSideBarLayout.dart';
 import 'package:blink/Contents/parent.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               context,
               MaterialPageRoute(
                   // builder: ((context) => const StudentSBLayout())));
-                  builder: ((context) => const TeacherSBLayout())));
+                  builder: ((context) => const StudentSBLayout())));
           break;
         case 'student':
           Navigator.pushReplacement(
@@ -37,12 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
           //builder: ((context) => const TeacherSBLayout())));
           break;
         case 'Parent':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Parent1())));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const ParentSBLayout())));
           break;
         case 'parent':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Parent1())));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const ParentSBLayout())));
           break;
         case 'Teacher':
           Navigator.pushReplacement(

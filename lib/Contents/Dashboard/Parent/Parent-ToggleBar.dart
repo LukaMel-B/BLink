@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'Student-Tab1.dart';
-import 'Student-Tab2.dart';
-import 'Student-Tab3.dart';
-import 'Student-Tab4.dart';
+import 'Parent-Tab1.dart';
+import 'Parent-Tab2.dart';
+import 'Parent-Tab3.dart';
+import 'Parent-Tab4.dart';
 
-class StudentToggleBar extends StatefulWidget {
-  const StudentToggleBar({Key? key}) : super(key: key);
+class ParentToggleBar extends StatefulWidget {
+  const ParentToggleBar({Key? key}) : super(key: key);
 
   @override
-  State<StudentToggleBar> createState() => _StudentToggleBarState();
+  State<ParentToggleBar> createState() => _ParentToggleBarState();
 }
 
-class _StudentToggleBarState extends State<StudentToggleBar>
+class _ParentToggleBarState extends State<ParentToggleBar>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 
@@ -88,10 +88,10 @@ class _StudentToggleBarState extends State<StudentToggleBar>
             child: TabBarView(
               controller: tabController,
               children: const [
-                StudentTab1(),
-                StudentTab2(),
-                StudentTab3(),
-                StudentTab4(),
+                ParentTab1(),
+                ParentTab2(),
+                ParentTab3(),
+                ParentTab4(),
               ],
             ),
           )

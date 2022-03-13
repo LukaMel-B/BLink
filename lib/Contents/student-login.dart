@@ -1,4 +1,4 @@
-import 'package:blink/Contents/Dashboard/Student/Student-dashboard.dart';
+import 'package:blink/Contents/Dashboard/Student/StudentSideBarLayout.dart';
 import 'package:blink/Contents/SignUp.dart';
 import 'package:blink/Contents/signup_controller.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class _StudentLoginState extends State<StudentLogin> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => const StudentDashboard(),
+          builder: (BuildContext context) => const StudentSBLayout(),
         ),
         (route) => false,
       );

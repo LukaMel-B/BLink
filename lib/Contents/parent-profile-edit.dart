@@ -1,12 +1,19 @@
-import 'package:blink/Contents/parent-profile-view.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:blink/Contents/functions/sform.dart';
+import 'dart:io';
+import 'package:blink/Contents/signup_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:blink/Contents/student-profile-view.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:blink/Contents/functions/sform.dart';
+import 'functions/const.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'parent-profile-view.dart';
 
 class ParentProfileEdit extends StatefulWidget {
   const ParentProfileEdit({Key? key}) : super(key: key);
-
   @override
   _ParentProfileEditState createState() => _ParentProfileEditState();
 }
@@ -15,26 +22,46 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
   final _auth = FirebaseAuth.instance;
   final _fireStore = FirebaseFirestore.instance;
   String? loggedUser;
-  final name = TextEditingController();
-  final occupation = TextEditingController();
-  final father = TextEditingController();
-  final mother = TextEditingController();
-  final altMobile = TextEditingController();
-  final mobile = TextEditingController();
-  getItemAndNavigate(BuildContext context) {
-    try {
-      final details = _fireStore.collection("users").doc(loggedUser).update({
-        "Occupation": occupation.text,
-        "Father": father.text,
-        "Mother": mother.text,
-        "AlternateMobileNumber": altMobile.text,
-      });
 
-      Navigator.push(context,
-          MaterialPageRoute(builder: ((context) => const ParentProfile())));
-    } catch (e) {
-      print(e);
+  File? pickedFile;
+  ImagePicker imagePicker = ImagePicker();
+
+  SignUpController signUpController = Get.find();
+
+  final name = TextEditingController();
+  final gMail = TextEditingController();
+  final fname = TextEditingController();
+  final mname = TextEditingController();
+  final altno = TextEditingController();
+  final phno = TextEditingController();
+  getItemAndNavigate(BuildContext context) async {
+    print(
+        "-----------------------------------------------------------------$pickedFile");
+    String imageUrl = "";
+    if (pickedFile != null) {
+      print(
+          "-----------------------------------------------------------------$pickedFile");
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('users')
+          .child('$loggedUser.jpg');
+      await ref.putFile(pickedFile!);
+      imageUrl = await ref.getDownloadURL();
     }
+    print(
+        "-----------------------------------------------------------------$loggedUser");
+    final details = _fireStore.collection("users").doc(loggedUser).update({
+      "fullName": name.text,
+      "Mail": gMail.text,
+      "Father Name": fname.text,
+      "Mother Name": mname.text,
+      "Alternate number": altno.text,
+      "Mobile number": phno.text,
+      "UserPicture": imageUrl,
+    });
+
+    Navigator.push(context,
+        MaterialPageRoute(builder: ((context) => const ParentProfile())));
   }
 
   void getUserID() async {
@@ -60,12 +87,7 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xffF9FFED), Color(0xffA4DADA)]),
-          ),
+          decoration: kTextFieldDecoration,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -89,47 +111,116 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                     const SizedBox(
                       height: 20,
                     ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor:
-                          const Color(0xffFDF9F9).withOpacity(0.99),
+                    Center(
+                      child: Stack(
+                        children: [
+                          const SizedBox(
+                            width: 115,
+                            height: 100,
+                          ),
+                          Obx(() => CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 55,
+                                backgroundImage:
+                                    signUpController.isProficPicPathSet.value ==
+                                            true
+                                        ? FileImage(File(signUpController
+                                            .profilePicPath
+                                            .value)) as ImageProvider
+                                        : const AssetImage(
+                                            'images/no-icon-image.png',
+                                          ),
+                              )),
+                          Positioned(
+                            bottom: 6,
+                            right: 3,
+                            child: ClipOval(
+                              child: Container(
+                                height: 35,
+                                width: 35,
+                                color: const Color(0xff00B8B8),
+                                child: InkWell(
+                                  child: const Icon(
+                                    Icons.camera_alt_rounded,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ),
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                        context: context,
+                                        backgroundColor:
+                                            const Color(0xffF7FFE8),
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(30),
+                                          ),
+                                        ),
+                                        builder: (context) =>
+                                            bottomSheet(context));
+                                  },
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                    _normalPadding(
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 50, bottom: 10, left: 50, right: 50),
                       child: Formfield(
                           controllers: name,
                           hintText: "full name",
                           type: TextInputType.name),
                     ),
-                    _normalPadding(
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 5, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: occupation,
-                          hintText: "Occupation",
-                          type: TextInputType.name),
+                          controllers: gMail,
+                          hintText: "Email",
+                          type: TextInputType.text),
                     ),
-                    _normalPadding(
-                        child: Row(
-                      children: [
-                        Formfield(
-                            controllers: father,
-                            hintText: "Father name",
-                            type: TextInputType.name),
-                        Formfield(
-                            controllers: mother,
-                            hintText: "Mother name",
-                            type: TextInputType.name),
-                      ],
-                    )),
-                    _normalPadding(
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 50, right: 50, top: 5, bottom: 15),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Formfield(
+                              controllers: fname,
+                              hintText: "Father name",
+                              type: TextInputType.name,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Formfield(
+                                controllers: mname,
+                                hintText: "Mother name",
+                                type: TextInputType.name,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 15, left: 50, right: 50),
                       child: Formfield(
-                        controllers: mobile,
-                        hintText: "mobile number",
+                        controllers: phno,
+                        hintText: "Mobile number",
                         type: TextInputType.number,
                       ),
                     ),
-                    _normalPadding(
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                        controllers: altMobile,
-                        hintText: "Alternate mobile number",
+                        controllers: altno,
+                        hintText: "Alternate Mobile number",
                         type: TextInputType.number,
                       ),
                     ),
@@ -139,16 +230,9 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 18, bottom: 25, right: 15),
+                              top: 25, bottom: 15, right: 20),
                           child: TextButton(
-                            onPressed: () {
-                              getItemAndNavigate(context);
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: ((context) =>
-                              //             const ParentProfile())));
-                            },
+                            onPressed: () => getItemAndNavigate(context),
                             child: const Icon(Icons.arrow_forward_rounded,
                                 size: 30, color: Colors.white),
                             style: TextButton.styleFrom(
@@ -169,15 +253,76 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
     );
   }
 
-  _normalPadding({required Widget child}) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 10,
-        bottom: 10,
-        left: 50,
-        right: 50,
+  Widget bottomSheet(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: size.height * 0.2,
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      child: Column(
+        children: [
+          const Text(
+            'Choose Profile Photo',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.image, size: 35),
+                    ),
+                    Text(
+                      'Gallery',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    )
+                  ],
+                ),
+                onTap: () {
+                  takephoto(ImageSource.gallery);
+                },
+              ),
+              const SizedBox(
+                width: 70,
+              ),
+              InkWell(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.camera_alt, size: 35),
+                    ),
+                    Text(
+                      'Camera',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    )
+                  ],
+                ),
+                onTap: () {
+                  takephoto(ImageSource.camera);
+                },
+              )
+            ],
+          )
+        ],
       ),
-      child: child,
     );
+  }
+
+  Future<void> takephoto(ImageSource source) async {
+    final pickedImage =
+        await imagePicker.pickImage(source: source, imageQuality: 20);
+    pickedFile = File(pickedImage!.path);
+    signUpController.setProfileImagePath(pickedFile!.path);
   }
 }

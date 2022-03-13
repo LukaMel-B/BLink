@@ -62,7 +62,7 @@ class _StudentAssignmentViewState extends State<StudentAssignmentView> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                 child: Container(
-                  height: 580,
+                  height: 650,
                   child: NotificationListener<OverscrollIndicatorNotification>(
                     onNotification: (overScroll) {
                       overScroll.disallowIndicator();

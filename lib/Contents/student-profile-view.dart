@@ -1,10 +1,13 @@
 import 'package:blink/Contents/Dashboard/Student/StudentSideBarLayout.dart';
 import 'package:blink/Contents/student-profile-edit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'functions/const.dart';
 import 'package:blink/Contents/functions/profileView.dart';
+
+import 'signup_controller.dart';
 
 class StudentProfile extends StatefulWidget {
   const StudentProfile({Key? key}) : super(key: key);
@@ -69,6 +72,8 @@ class _StudentProfileState extends State<StudentProfile> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+
+  SignUpController signUpController = Get.put(SignUpController());
 
   @override
   void initState() {

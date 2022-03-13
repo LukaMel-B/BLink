@@ -1,17 +1,17 @@
+import 'package:blink/Contents/Dashboard/Student/Student-Timetable.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
-import 'Student-Timetable.dart';
-import 'Student-Togglebar.dart';
+import 'Parent-ToggleBar.dart';
 
-class StudentDashboard extends StatefulWidget {
-  const StudentDashboard({Key? key}) : super(key: key);
+class ParentDashboard extends StatefulWidget {
+  const ParentDashboard({Key? key}) : super(key: key);
 
   @override
-  _StudentDashboardState createState() => _StudentDashboardState();
+  _ParentDashboardState createState() => _ParentDashboardState();
 }
 
-class _StudentDashboardState extends State<StudentDashboard> {
+class _ParentDashboardState extends State<ParentDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +67,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
-                  child: StudentToggleBar(),
+                  child: ParentToggleBar(),
                 ),
               ],
             ),

@@ -1,4 +1,4 @@
-import 'package:blink/Contents/parent-profile-view.dart';
+import 'package:blink/Contents/Dashboard/Parent/ParentSBLayout.dart';
 import 'package:blink/Contents/signup_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,7 @@ class _ParentLoginState extends State<ParentLogin> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(context,
-          MaterialPageRoute(builder: ((context) => const ParentProfile())));
+          MaterialPageRoute(builder: ((context) => const ParentSBLayout())));
       setState(() {
         _isLoading = false;
       });
