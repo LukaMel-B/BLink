@@ -1,6 +1,6 @@
+import 'package:blink/Contents/Dashboard/Student/StudentSideBarLayout.dart';
 import 'package:blink/Contents/Dashboard/Teacher/TeacherSideBarLayout.dart';
 import 'package:blink/Contents/parent.dart';
-import 'package:blink/Contents/student.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
       switch (userType) {
         case 'Student':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Student1())));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const TeacherSBLayout())));
           break;
         case 'student':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const Student1())));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const StudentSBLayout())));
           break;
         case 'Parent':
           Navigator.pushReplacement(context,
@@ -43,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               context,
               MaterialPageRoute(
                   builder: ((context) => const TeacherSBLayout())));
-          // builder: ((context) => const Student1())));
+          //builder: ((context) => const Student1())));
           break;
         case 'teacher':
           Navigator.pushReplacement(
