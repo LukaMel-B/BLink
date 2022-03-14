@@ -39,7 +39,7 @@ class StudentListCard extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Image.asset(
+                  Image.network(
                     image,
                     height: 102,
                     width: 106,

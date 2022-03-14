@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:blink/Contents/signup_controller.dart';
 import 'package:blink/Contents/teachers-profile-view.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/Contents/functions/sform.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,7 +33,18 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
   final mobile = TextEditingController();
   final altMobile = TextEditingController();
   final dept = TextEditingController();
-  getItemAndNavigate(BuildContext context) {
+  getItemAndNavigate(BuildContext context) async {
+    String imageUrl = "";
+    if (pickedFile != null) {
+      print(
+          "-----------------------------------------------------------------$pickedFile");
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('users')
+          .child('$loggedUser.jpg');
+      await ref.putFile(pickedFile!);
+      imageUrl = await ref.getDownloadURL();
+    }
     try {
       final details = _fireStore.collection("users").doc(loggedUser).update({
         "fullName": name.text,
@@ -40,6 +52,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
         "Department": dept.text,
         "Subject": subject.text,
         "AlternateMobileNumber": altMobile.text,
+        "UserPicture": imageUrl,
       });
 
       Navigator.push(context,
@@ -155,9 +168,11 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                       padding: const EdgeInsets.only(
                           top: 50, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: name,
-                          hintText: "full name",
-                          type: TextInputType.name),
+                        controllers: name,
+                        hintText: "full name",
+                        type: TextInputType.name,
+                        initialValue: '',
+                      ),
                     ),
                     Padding(
                       padding:
@@ -166,6 +181,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                         controllers: emails,
                         hintText: "Email",
                         type: TextInputType.emailAddress,
+                        initialValue: '',
                       ),
                     ),
                     Padding(
@@ -178,6 +194,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                               controllers: dept,
                               hintText: "Department",
                               type: TextInputType.name,
+                              initialValue: '',
                             ),
                           ),
                           Expanded(
@@ -187,6 +204,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                                 controllers: subject,
                                 hintText: "Subject",
                                 type: TextInputType.text,
+                                initialValue: '',
                               ),
                             ),
                           ),
@@ -200,6 +218,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                         controllers: mobile,
                         hintText: "mobile number",
                         type: TextInputType.number,
+                        initialValue: '',
                       ),
                     ),
 
@@ -210,6 +229,7 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
                         controllers: altMobile,
                         hintText: "Alternate mobile number",
                         type: TextInputType.number,
+                        initialValue: '',
                       ),
                     ),
                     Row(
@@ -248,77 +268,77 @@ class _TeacherProfileEditState extends State<TeacherProfileEdit> {
       ),
     );
   }
-}
 
-Widget bottomSheet(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return Container(
-    width: double.infinity,
-    height: size.height * 0.2,
-    margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-    child: Column(
-      children: [
-        const Text(
-          'Choose Profile Photo',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        const SizedBox(
-          height: 25,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            InkWell(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(Icons.image, size: 35),
-                  ),
-                  Text(
-                    'Gallery',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  )
-                ],
+  Widget bottomSheet(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: size.height * 0.2,
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      child: Column(
+        children: [
+          const Text(
+            'Choose Profile Photo',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.image, size: 35),
+                    ),
+                    Text(
+                      'Gallery',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    )
+                  ],
+                ),
+                onTap: () {
+                  takephoto(ImageSource.gallery);
+                },
               ),
-              onTap: () {
-                takephoto(ImageSource.gallery);
-              },
-            ),
-            const SizedBox(
-              width: 70,
-            ),
-            InkWell(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(Icons.camera_alt, size: 35),
-                  ),
-                  Text(
-                    'Camera',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  )
-                ],
+              const SizedBox(
+                width: 70,
               ),
-              onTap: () {
-                takephoto(ImageSource.camera);
-              },
-            )
-          ],
-        )
-      ],
-    ),
-  );
-}
+              InkWell(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.camera_alt, size: 35),
+                    ),
+                    Text(
+                      'Camera',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    )
+                  ],
+                ),
+                onTap: () {
+                  takephoto(ImageSource.camera);
+                },
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
 
-Future<void> takephoto(ImageSource source) async {
-  dynamic imagePicker;
-  final pickedImage =
-      await imagePicker.pickImage(source: source, imageQuality: 100);
-  var pickedFile = File(pickedImage!.path);
-  dynamic signUpController;
-  signUpController.setProfileImagePath(pickedFile.path);
+  Future<void> takephoto(ImageSource source) async {
+    final pickedImage =
+        await imagePicker.pickImage(source: source, imageQuality: 20);
+    pickedFile = File(pickedImage!.path);
+    signUpController.setProfileImagePath(pickedFile!.path);
+  }
 }

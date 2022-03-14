@@ -13,6 +13,7 @@ class TeacherStudentDetailsPage extends StatefulWidget {
   final String yr;
   final String adno;
   final String pno;
+  final String image;
 
   const TeacherStudentDetailsPage({
     Key? key,
@@ -21,6 +22,7 @@ class TeacherStudentDetailsPage extends StatefulWidget {
     required this.mail,
     required this.pmail,
     required this.dep,
+    required this.image,
     required this.yr,
     required this.adno,
     required this.pno,
@@ -60,12 +62,20 @@ class _TeacherStudentDetailsPageState extends State<TeacherStudentDetailsPage> {
                 ),
                 SizedBox(
                   height: 120,
-                  width: 120,
-                  child: ClipOval(
-                    child: Image.asset(
-                      'images/circle-pic-7.png',
-                    ),
-                    // foregroundImage: NetworkImage(imageUrl),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 80,
+                      ),
+                      ClipOval(
+                        child: Image.network(widget.image),
+                        // foregroundImage: NetworkImage(imageUrl),
+                      ),
+                      const SizedBox(
+                        width: 80,
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(

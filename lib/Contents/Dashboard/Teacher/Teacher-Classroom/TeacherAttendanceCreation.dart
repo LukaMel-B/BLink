@@ -22,8 +22,31 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
   final day = TextEditingController();
   final date = TextEditingController();
   final fn = TextEditingController();
+  List<Map<String, dynamic>> studentsDB = [];
+  bool _loading = false;
+
+  _getAllStudents() async {
+    setState(() {
+      _loading = true;
+    });
+    var temp = await FirebaseFirestore.instance
+        .collection('users')
+        .where('UserType', isEqualTo: 'Student')
+        .orderBy('fullName')
+        .get();
+    List<Map<String, dynamic>> list = [];
+    list = temp.docs.map((e) {
+      return e.data();
+    }).toList();
+    setState(() {
+      studentsDB = list;
+      _loading = false;
+    });
+  }
+
   @override
   void initState() {
+    _getAllStudents();
     setState(() {
       attends = 0;
     });
@@ -48,7 +71,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
       'date': date.text,
       'time': fn.text,
       'present': attends,
-      'total': student.length,
+      'total': studentsDB.length,
       'period': period.text,
       'day': day.text,
     });
@@ -56,20 +79,20 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
         MaterialPageRoute(builder: ((context) => const TeacherAttendance())));
   }
 
-  List student = [
-    'Amy Adams',
-    'Derick Abraham',
-    'Emma Jones',
-    'Jack Daniel',
-    'Jane Lovey',
-    'Jack Scott',
-    'John Lind',
-    'Lawrence',
-    'Natasha',
-    'Philip Russell',
-    'Roy Anthony',
-    'Vincent Willie'
-  ];
+  // List student = [
+  //   'Amy Adams',
+  //   'Derick Abraham',
+  //   'Emma Jones',
+  //   'Jack Daniel',
+  //   'Jane Lovey',
+  //   'Jack Scott',
+  //   'John Lind',
+  //   'Lawrence',
+  //   'Natasha',
+  //   'Philip Russell',
+  //   'Roy Anthony',
+  //   'Vincent Willie'
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,8 +100,7 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
         child: Container(
           decoration: kTextFieldDecoration,
           child: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+            child: ListView(
               children: [
                 const SizedBox(height: 40),
                 const Center(
@@ -239,12 +261,13 @@ class _TeacherAttendanceCreateState extends State<TeacherAttendanceCreate> {
                         },
                         child: ListView(
                           children: [
-                            for (var i = 0; i < student.length; i++)
+                            for (var i = 0; i < studentsDB.length; i++)
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(student[i], style: teacherattndnctxt),
+                                  Text(studentsDB[i]['fullName'],
+                                      style: teacherattndnctxt),
                                   TeacherAttendanceChechlistCard(add)
                                 ],
                               ),

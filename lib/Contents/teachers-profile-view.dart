@@ -95,10 +95,20 @@ class _TeacherProfileState extends State<TeacherProfile> {
                     ),
                     SizedBox(
                       height: 120,
-                      width: 120,
-                      child: ClipOval(
-                        child: Image.network(imageUrl),
-                        // foregroundImage: NetworkImage(imageUrl),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          ClipOval(
+                            child: Image.network(imageUrl),
+                            // foregroundImage: NetworkImage(imageUrl),
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(

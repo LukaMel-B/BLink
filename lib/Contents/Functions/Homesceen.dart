@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  // builder: ((context) => const StudentSBLayout())));
                   builder: ((context) => const StudentSBLayout())));
           break;
         case 'student':

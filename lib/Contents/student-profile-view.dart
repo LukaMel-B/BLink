@@ -49,8 +49,7 @@ class _StudentProfileState extends State<StudentProfile> {
         emailHolder = detail.data()?['email'] ?? "email";
         yearHolder = detail.data()?['Year'] ?? "year";
         adHolder = detail.data()?['AdmissionNumber'] ?? "admission number";
-        imageUrl =
-            detail.data()?['UserPicture'] ?? 'images/student-profile.png';
+        imageUrl = detail.data()?['UserPicture'] ?? 'images/no-icon-image.png';
         print(
             "-----------------------------------------------------------------$imageUrl");
       });
@@ -113,10 +112,20 @@ class _StudentProfileState extends State<StudentProfile> {
                     ),
                     SizedBox(
                       height: 120,
-                      width: 120,
-                      child: ClipOval(
-                        child: Image.network(imageUrl),
-                        // foregroundImage: NetworkImage(imageUrl),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          ClipOval(
+                            child: Image.network(imageUrl),
+                            // foregroundImage: NetworkImage(imageUrl),
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -188,10 +197,16 @@ class _StudentProfileState extends State<StudentProfile> {
                             child: TextButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: ((context) =>
-                                            const StudentProfileEdit())));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: ((context) => StudentProfileEdit(
+                                          name: nameHolder,
+                                          email: emailHolder,
+                                          parent: parentHolder,
+                                          dept: deptHolder,
+                                        )),
+                                  ),
+                                );
                               },
                               child: const Text(
                                 ' Edit Profile',

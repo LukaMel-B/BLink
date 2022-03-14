@@ -169,17 +169,21 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                       padding: const EdgeInsets.only(
                           top: 50, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: name,
-                          hintText: "full name",
-                          type: TextInputType.name),
+                        controllers: name,
+                        hintText: "full name",
+                        type: TextInputType.name,
+                        initialValue: '',
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: gMail,
-                          hintText: "Email",
-                          type: TextInputType.text),
+                        controllers: gMail,
+                        hintText: "Email",
+                        type: TextInputType.text,
+                        initialValue: '',
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -191,6 +195,7 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                               controllers: fname,
                               hintText: "Father name",
                               type: TextInputType.name,
+                              initialValue: '',
                             ),
                           ),
                           Expanded(
@@ -200,6 +205,7 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                                 controllers: mname,
                                 hintText: "Mother name",
                                 type: TextInputType.name,
+                                initialValue: '',
                               ),
                             ),
                           ),
@@ -213,6 +219,7 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                         controllers: phno,
                         hintText: "Mobile number",
                         type: TextInputType.number,
+                        initialValue: '',
                       ),
                     ),
                     Padding(
@@ -222,6 +229,7 @@ class _ParentProfileEditState extends State<ParentProfileEdit> {
                         controllers: altno,
                         hintText: "Alternate Mobile number",
                         type: TextInputType.number,
+                        initialValue: '',
                       ),
                     ),
                     Row(

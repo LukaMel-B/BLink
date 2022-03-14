@@ -26,7 +26,9 @@ class _StudentTimeTableState extends State<StudentTimeTable> {
                     width: 20,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: const Icon(Icons.arrow_back_rounded,
                         size: 35, color: Color(0xff34a3a3)),
                     style: TextButton.styleFrom(

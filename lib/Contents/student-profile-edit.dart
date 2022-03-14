@@ -11,7 +11,16 @@ import 'functions/const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class StudentProfileEdit extends StatefulWidget {
-  const StudentProfileEdit({Key? key}) : super(key: key);
+  const StudentProfileEdit(
+      {required this.name,
+      required this.parent,
+      required this.email,
+      required this.dept});
+
+  final String name;
+  final String parent;
+  final String email;
+  final String dept;
   @override
   _StudentProfileEditState createState() => _StudentProfileEditState();
 }
@@ -164,17 +173,21 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                       padding: const EdgeInsets.only(
                           top: 50, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: name,
-                          hintText: "full name",
-                          type: TextInputType.name),
+                        controllers: name,
+                        hintText: "full name",
+                        type: TextInputType.name,
+                        initialValue: widget.name,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 50, right: 50),
                       child: Formfield(
-                          controllers: gMail,
-                          hintText: "Guardian Email(Parent email)",
-                          type: TextInputType.emailAddress),
+                        controllers: gMail,
+                        hintText: "Guardian Email(Parent email)",
+                        type: TextInputType.emailAddress,
+                        initialValue: widget.email,
+                      ),
                     ),
                     Padding(
                       padding:
@@ -183,6 +196,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                         controllers: emails,
                         hintText: "Email",
                         type: TextInputType.emailAddress,
+                        initialValue: '',
                       ),
                     ),
                     Padding(
@@ -192,6 +206,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                         children: [
                           Expanded(
                             child: Formfield(
+                              initialValue: widget.dept,
                               controllers: dept,
                               hintText: "Department",
                               type: TextInputType.name,
@@ -204,6 +219,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                                 controllers: yr,
                                 hintText: "Year",
                                 type: TextInputType.number,
+                                initialValue: '',
                               ),
                             ),
                           ),
@@ -217,6 +233,7 @@ class _StudentProfileEditState extends State<StudentProfileEdit> {
                         controllers: adNo,
                         hintText: "Admission number",
                         type: TextInputType.number,
+                        initialValue: '',
                       ),
                     ),
                     Row(

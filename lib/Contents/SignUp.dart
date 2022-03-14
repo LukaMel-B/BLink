@@ -43,12 +43,26 @@ class _SignUpState extends State<SignUp> {
       });
       switch (user) {
         case 'student':
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => StudentProfileEdit())));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => StudentProfileEdit(
+                        name: fullName,
+                        email: email,
+                        parent: "",
+                        dept: "",
+                      ))));
           break;
         case 'Student':
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => StudentProfileEdit())));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => StudentProfileEdit(
+                        name: fullName,
+                        email: email,
+                        parent: "",
+                        dept: "",
+                      ))));
           break;
         case 'parent':
           Navigator.push(

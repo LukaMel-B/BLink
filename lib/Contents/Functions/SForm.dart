@@ -5,12 +5,14 @@ class Formfield extends StatelessWidget {
     Key? key,
     required this.controllers,
     required this.hintText,
+    required this.initialValue,
     required this.type,
   }) : super(key: key);
 
   final TextEditingController controllers;
   final String hintText;
   final TextInputType type;
+  final String initialValue;
 
   @override
   Widget build(BuildContext context) {

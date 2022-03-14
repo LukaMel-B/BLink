@@ -1,4 +1,6 @@
 import 'package:blink/Contents/Dashboard/Student/Student-SubjectCard.dart';
+import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Student-progress-page.dart';
+import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
 class ParentTab1 extends StatelessWidget {
@@ -65,43 +67,76 @@ class ParentTab1 extends StatelessWidget {
           height: 40,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextButton(
-              onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: ((context) => const StudentAssignmentView())));
-              },
-              child: Row(
-                children: const [
-                  Icon(Icons.chat, size: 35, color: Color(0xff299A97)),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Chat',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Rockwell',
-                      fontSize: 17,
+            Padding(
+              padding: const EdgeInsets.only(left: 55),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) =>
+                              const StudentProgressPremium())));
+                },
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.insert_chart_outlined,
+                      size: 30,
+                      color: Color(0xff299A97),
                     ),
-                  ),
-                ],
-              ),
-              style: TextButton.styleFrom(
-                  backgroundColor: Colors.white.withOpacity(0.67),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Progress',
+                      style: timetabletext,
+                    )
+                  ],
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.65),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13)),
-                  textStyle: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w800)),
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              ),
             ),
-            const SizedBox(
-              width: 25,
-            )
+            Padding(
+              padding: const EdgeInsets.only(right: 55),
+              child: TextButton(
+                onPressed: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: ((context) =>
+                  //             const TeacherSBLayout())));
+                },
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.chat,
+                      size: 30,
+                      color: Color(0xff299A97),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Chat',
+                      style: timetabletext,
+                    )
+                  ],
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.65),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              ),
+            ),
           ],
-        )
+        ),
       ],
     );
   }

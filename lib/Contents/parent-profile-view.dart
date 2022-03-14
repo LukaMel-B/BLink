@@ -44,7 +44,7 @@ class _ParentProfileState extends State<ParentProfile> {
       setState(() {
         nameHolder = detail.data()?['fullName'] ?? "Name";
         emailHolder = detail.data()?['Mail'] ?? "Email";
-        imageUrl = detail.data()?['UserPicture'] ?? 'images/no-icon-image.png';
+        imageUrl = detail.data()?['UserPicture'] ?? "images/no-icon-image.png";
         fnameHolder = detail.data()?['Father Name'] ?? "Father Name";
         mnameHolder = detail.data()?['Mother Name'] ?? "Mother Name";
         mobileHolder = detail.data()?['Mobile number'] ?? "Mobile number";
@@ -116,10 +116,20 @@ class _ParentProfileState extends State<ParentProfile> {
                     ),
                     SizedBox(
                       height: 120,
-                      width: 120,
-                      child: ClipOval(
-                        child: Image.network(imageUrl),
-                        // foregroundImage: NetworkImage(imageUrl),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          ClipOval(
+                            child: Image.network(imageUrl),
+                            // foregroundImage: NetworkImage(imageUrl),
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
