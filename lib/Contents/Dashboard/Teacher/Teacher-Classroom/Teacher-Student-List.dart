@@ -1,3 +1,6 @@
+import 'package:blink/Contents/Dashboard/Chat/ChatUI.dart';
+import 'package:blink/Contents/Dashboard/Chat/chat.dart';
+import 'package:blink/Contents/Dashboard/Teacher/Teacher-Students-Details-Page-ChatUI.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -118,17 +121,36 @@ class _TeacherStudentListState extends State<TeacherStudentList> {
                       dept: studentsDB[index]['Department'].toString(),
                       image: studentsDB[index]['UserPicture'].toString(),
                       name: studentsDB[index]['fullName'].toString(),
-                      path: TeacherStudentDetailsPage(
-                        name: studentsDB[index]['fullName'].toString(),
-                        adno: studentsDB[index]['AdmissionNumber'].toString(),
-                        dep: studentsDB[index]['Department'].toString(),
-                        mail: studentsDB[index]['email'].toString(),
-                        parent: studentsDB[index]['GuardianName'].toString(),
-                        pmail: 'marcues01@gmai.com',
-                        pno: '97184523985',
-                        yr: studentsDB[index]['fullName'].toString(),
-                        image: studentsDB[index]['UserPicture'].toString(),
-                      ),
+                      path: studentsDB[index]['fullName'].toString() ==
+                              'Derick Adam'
+                          ? TeacherStudentDetailsPageChat(
+                              name: studentsDB[index]['fullName'].toString(),
+                              adno: studentsDB[index]['AdmissionNumber']
+                                  .toString(),
+                              dep: studentsDB[index]['Department'].toString(),
+                              mail: studentsDB[index]['email'].toString(),
+                              parent:
+                                  studentsDB[index]['GuardianName'].toString(),
+                              pmail: 'marcues01@gmai.com',
+                              pno: '97184523985',
+                              yr: studentsDB[index]['Year'].toString(),
+                              image:
+                                  studentsDB[index]['UserPicture'].toString(),
+                            )
+                          : TeacherStudentDetailsPage(
+                              name: studentsDB[index]['fullName'].toString(),
+                              adno: studentsDB[index]['AdmissionNumber']
+                                  .toString(),
+                              dep: studentsDB[index]['Department'].toString(),
+                              mail: studentsDB[index]['email'].toString(),
+                              parent:
+                                  studentsDB[index]['GuardianName'].toString(),
+                              pmail: 'marcues01@gmai.com',
+                              pno: '97184523985',
+                              yr: studentsDB[index]['Year'].toString(),
+                              image:
+                                  studentsDB[index]['UserPicture'].toString(),
+                            ),
                       rollNo: roll[index],
                     );
                   },

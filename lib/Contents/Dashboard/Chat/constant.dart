@@ -20,8 +20,7 @@ const kMessageContainerDecoration = BoxDecoration(
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a Value',
-  contentPadding:
-  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
@@ -34,9 +33,9 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
 );
-const kTextFieldDecoration1=BoxDecoration(
-gradient: LinearGradient(
-begin: Alignment.topCenter,
-end: Alignment.bottomCenter,
-colors: [Color(0xffF9FFED), Color(0xffA4DADA)]),
+const kTextFieldDecoration1 = BoxDecoration(
+  gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [Color(0xffF9FFED), Color(0xffA4DADA)]),
 );

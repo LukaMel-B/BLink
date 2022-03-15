@@ -1,4 +1,4 @@
-import 'package:blink/Contents/Dashboard/Chat/chat.dart';
+import 'package:blink/Contents/Dashboard/Chat/ChatUI.dart';
 import 'package:blink/Contents/Dashboard/Student/Student-SubjectCard.dart';
 import 'package:blink/Contents/Dashboard/Teacher/Teacher-Classroom/Teacher-Student-progress-page.dart';
 import 'package:blink/Contents/Functions/const.dart';
@@ -107,8 +107,10 @@ class ParentTab1 extends StatelessWidget {
               padding: const EdgeInsets.only(right: 55),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => const Chat())));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => const ChatUI())));
                 },
                 child: Row(
                   children: const [

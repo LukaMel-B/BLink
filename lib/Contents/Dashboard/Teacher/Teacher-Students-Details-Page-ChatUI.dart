@@ -1,11 +1,11 @@
-import 'package:blink/Contents/Dashboard/Chat/ChatUI.dart';
+import 'package:blink/Contents/Dashboard/Chat/chat.dart';
 import 'package:blink/Contents/Functions/ProfileView.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
 
 import 'Teacher-Classroom/Teacher-Student-progress-page.dart';
 
-class TeacherStudentDetailsPage extends StatefulWidget {
+class TeacherStudentDetailsPageChat extends StatefulWidget {
   final String name;
   final String parent;
   final String mail;
@@ -16,7 +16,7 @@ class TeacherStudentDetailsPage extends StatefulWidget {
   final String pno;
   final String image;
 
-  const TeacherStudentDetailsPage({
+  const TeacherStudentDetailsPageChat({
     Key? key,
     required this.name,
     required this.parent,
@@ -30,11 +30,12 @@ class TeacherStudentDetailsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<TeacherStudentDetailsPage> createState() =>
-      _TeacherStudentDetailsPageState();
+  State<TeacherStudentDetailsPageChat> createState() =>
+      _TeacherStudentDetailsPageChatState();
 }
 
-class _TeacherStudentDetailsPageState extends State<TeacherStudentDetailsPage> {
+class _TeacherStudentDetailsPageChatState
+    extends State<TeacherStudentDetailsPageChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -185,7 +186,7 @@ class _TeacherStudentDetailsPageState extends State<TeacherStudentDetailsPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: ((context) => const ChatUI())));
+                                  builder: ((context) => const Chat())));
                         },
                         child: Row(
                           children: const [

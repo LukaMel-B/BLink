@@ -71,39 +71,29 @@ class _StudentAssignmentViewState extends State<StudentAssignmentView> {
                     child: ListView(
                       children: const [
                         StudentAssignmentViewCard(
-                          date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
+                          date: '02/02/2022',
+                          subtitle: 'Creation',
+                          title: 'Resume',
+                        ),
+                        StudentAssignmentViewCard(
+                          date: '06/02/2022',
+                          subtitle: 'Report',
+                          title: 'Essay',
+                        ),
+                        StudentAssignmentViewCard(
+                          date: '15/02/2022',
+                          subtitle: 'Writing',
+                          title: 'Letter',
+                        ),
+                        StudentAssignmentViewCard(
+                          date: '25/02/2022',
+                          subtitle: 'Report',
+                          title: 'Thesis',
                         ),
                         StudentAssignmentViewCard(
                           date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
-                        ),
-                        StudentAssignmentViewCard(
-                          date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
-                        ),
-                        StudentAssignmentViewCard(
-                          date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
-                        ),
-                        StudentAssignmentViewCard(
-                          date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
-                        ),
-                        StudentAssignmentViewCard(
-                          date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
-                        ),
-                        StudentAssignmentViewCard(
-                          date: '02/03/2022',
-                          subtitle: 'Submission',
-                          title: 'Record',
+                          subtitle: 'Format',
+                          title: 'Notice',
                         ),
                       ],
                     ),
