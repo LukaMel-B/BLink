@@ -1,3 +1,4 @@
+import 'package:blink/Contents/Dashboard/Chat/chat.dart';
 import 'package:blink/Contents/Functions/ProfileView.dart';
 import 'package:blink/Contents/Functions/const.dart';
 import 'package:flutter/material.dart';
@@ -181,11 +182,10 @@ class _TeacherStudentDetailsPageState extends State<TeacherStudentDetailsPage> {
                       padding: const EdgeInsets.only(bottom: 10, right: 55),
                       child: TextButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: ((context) =>
-                          //             const TeacherSBLayout())));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) => const Chat())));
                         },
                         child: Row(
                           children: const [

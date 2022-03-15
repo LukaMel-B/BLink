@@ -23,6 +23,7 @@ class _TeacherStudentListState extends State<TeacherStudentList> {
     var temp = await FirebaseFirestore.instance
         .collection('users')
         .where('UserType', isEqualTo: 'Student')
+        .orderBy('fullName')
         .get();
     List<Map<String, dynamic>> list = [];
     list = temp.docs.map((e) {
@@ -39,6 +40,21 @@ class _TeacherStudentListState extends State<TeacherStudentList> {
     _getAllStudents();
     super.initState();
   }
+
+  List roll = [
+    'Roll no: 61',
+    'Roll no: 62',
+    'Roll no: 63',
+    'Roll no: 64',
+    'Roll no: 65',
+    'Roll no: 66',
+    'Roll no: 67',
+    'Roll no: 68',
+    'Roll no: 69',
+    'Roll no: 70',
+    'Roll no: 71',
+    'Roll no: 72'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +118,6 @@ class _TeacherStudentListState extends State<TeacherStudentList> {
                       dept: studentsDB[index]['Department'].toString(),
                       image: studentsDB[index]['UserPicture'].toString(),
                       name: studentsDB[index]['fullName'].toString(),
-                      rollNo: 'Roll no: 61',
                       path: TeacherStudentDetailsPage(
                         name: studentsDB[index]['fullName'].toString(),
                         adno: studentsDB[index]['AdmissionNumber'].toString(),
@@ -114,6 +129,7 @@ class _TeacherStudentListState extends State<TeacherStudentList> {
                         yr: studentsDB[index]['fullName'].toString(),
                         image: studentsDB[index]['UserPicture'].toString(),
                       ),
+                      rollNo: roll[index],
                     );
                   },
                 ),
