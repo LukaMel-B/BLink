@@ -38,10 +38,10 @@ class StudentTab1 extends StatelessWidget {
                       child: StudentSubjectCard(
                         image: 'images/teachers-pic-2.png',
                         subtitle:
-                            'Internal Exam will be held on unit 4 tomorrow at 2pm ',
+                            'Prepare an essay on Disaster management before 9am tomorrow',
                         teacher: 'Ashley Ind',
-                        time: '09:20 AM',
-                        title: 'Internal Exam',
+                        time: '07:37 PM',
+                        title: 'Essay Writing',
                       ),
                     ),
                     Padding(
@@ -50,10 +50,10 @@ class StudentTab1 extends StatelessWidget {
                       child: StudentSubjectCard(
                         image: 'images/teachers-pic-2.png',
                         subtitle:
-                            'Internal Exam will be held on unit 4 tomorrow at 2pm ',
+                            'Submit an assignment on thesis report before Thursday.',
                         teacher: 'Ashley Ind',
-                        time: '09:20 AM',
-                        title: 'Internal Exam',
+                        time: '10:12 AM',
+                        title: 'Assignment',
                       ),
                     ),
                   ],
