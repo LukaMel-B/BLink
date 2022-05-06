@@ -64,10 +64,10 @@ class _TeacgerToggleBarState extends State<TeacgerToggleBar>
                   controller: tabController,
                   tabs: const [
                     Tab(
-                      text: 'Mathematics',
+                      text: 'Computer Science',
                     ),
                     Tab(
-                      text: 'Computer Science',
+                      text: 'Mathematics',
                     ),
                   ],
                 ),
@@ -81,8 +81,8 @@ class _TeacgerToggleBarState extends State<TeacgerToggleBar>
             child: TabBarView(
               controller: tabController,
               children: const [
-                Tab1(),
                 Tab2(),
+                Tab1(),
               ],
             ),
           )

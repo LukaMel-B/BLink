@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../teachers-profile-view.dart';
 import 'Teacher-Class-Container.dart';
+import 'Teacher-Classroom/Teacher-Classroom-Main.dart';
 
 class Tab2 extends StatelessWidget {
   const Tab2({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem1.png',
                         title: '1st Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       ),
                       SizedBox(
                         width: 35,
@@ -35,7 +36,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem2.png',
                         title: '2nd Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       )
                     ],
                   ),
@@ -48,7 +49,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem3.png',
                         title: '3rd Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       ),
                       SizedBox(
                         width: 35,
@@ -56,7 +57,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem4.png',
                         title: '4th Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       )
                     ],
                   ),
@@ -69,7 +70,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem5.png',
                         title: '5th Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       ),
                       SizedBox(
                         width: 35,
@@ -77,7 +78,7 @@ class Tab2 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/CS-Sem6.png',
                         title: '6th Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       )
                     ],
                   ),

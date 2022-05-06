@@ -36,7 +36,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-2.png',
                         title: '2nd Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       )
                     ],
                   ),
@@ -49,7 +49,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-3.png',
                         title: '3rd Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       ),
                       SizedBox(
                         width: 35,
@@ -57,7 +57,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-4.png',
                         title: '4th Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       )
                     ],
                   ),
@@ -70,7 +70,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-5.png',
                         title: '5th Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       ),
                       SizedBox(
                         width: 35,
@@ -78,7 +78,7 @@ class Tab1 extends StatelessWidget {
                       ClassContainer(
                         image: 'images/Sem-6.png',
                         title: '6th Semester',
-                        nextpage: TeacherProfile(),
+                        nextpage: TeacherClassroomMain(),
                       )
                     ],
                   ),
